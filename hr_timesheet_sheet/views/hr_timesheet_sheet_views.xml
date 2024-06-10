@@ -107,7 +107,10 @@
                     </group>
                     <field name="new_line_ids" invisible="1" readonly="state not in ['draft', 'new']" />
                     <notebook>
-                        <page string="Summary">
+                        <!-- T67478: Summary page hidden until x2many_2d_matrix widget is working. Only the Details view is available until then.
+                            The Summary page, without the widget, would contain 0:00 rows in a list format that is slightly confusing for a user.
+                         -->
+                        <page string="Summary" invisible="1">
                             <group name="Sheet" class="hr_timesheet_sheet_summary">
                                 <field
                                     name="line_ids"
