@@ -1,0 +1,61 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_inventory_quantity_history
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0-20241118\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-29 11:25+0000\n"
+"PO-Revision-Date: 2025-04-29 11:25+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_inventory_quantity_history
+#: model:ir.model.fields,field_description:stock_inventory_quantity_history.field_stock_move_line__inventory_real_qty
+msgid "Inventory Real Qty"
+msgstr "Saldo inventoinnin jälkeen"
+
+#. module: stock_inventory_quantity_history
+#: model:ir.model.fields,field_description:stock_inventory_quantity_history.field_stock_move_line__inventory_theoretical_qty
+msgid "Inventory Theoretical Qty"
+msgstr "Saldo ennen inventointia"
+
+#. module: stock_inventory_quantity_history
+#: model:ir.model,name:stock_inventory_quantity_history.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Pakkaustoiminto"
+
+#. module: stock_inventory_quantity_history
+#: model:ir.model,name:stock_inventory_quantity_history.model_stock_quant
+msgid "Quants"
+msgstr "Määrät"
+
+#. module: stock_inventory_quantity_history
+#: model_terms:ir.ui.view,arch_db:stock_inventory_quantity_history.stock_move_line_form
+msgid "Real Quantity"
+msgstr "Saldo inventoinnin jälkeen"
+
+#. module: stock_inventory_quantity_history
+#: model:ir.model.fields,help:stock_inventory_quantity_history.field_stock_move_line__inventory_real_qty
+msgid "Real Quantity at the time of the inventory"
+msgstr "Varastosaldo inventoinnin tekemisen jälkeen"
+
+#. module: stock_inventory_quantity_history
+#: model_terms:ir.ui.view,arch_db:stock_inventory_quantity_history.stock_move_line_form
+msgid "Theoretical Quantity"
+msgstr "Saldo ennen inventointia"
+
+#. module: stock_inventory_quantity_history
+#: model:ir.model.fields,help:stock_inventory_quantity_history.field_stock_move_line__inventory_theoretical_qty
+msgid "Theoretical Quantity right before the inventory"
+msgstr "Varastosaldo ennen inventoinnin tekemistä"
+
+#. module: stock_inventory_quantity_history
+#: model_terms:ir.ui.view,arch_db:stock_inventory_quantity_history.stock_move_line_form
+msgid "Unit of Measure"
+msgstr "Mittayksikkö"
