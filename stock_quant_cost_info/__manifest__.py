@@ -4,12 +4,15 @@
 {
     "name": "Stock Quant Cost Info",
     "summary": "Shows the cost of the quants",
-    "version": "17.0.1.0.0",
+    "version": "17.0.1.0.1",
     "author": "Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/stock-logistics-warehouse",
     "category": "Warehouse",
     "depends": ["stock"],
-    "data": ["views/stock_inventory_views.xml", "views/report_stockinventory.xml"],
+    "data": [
+        "views/stock_inventory_views.xml",
+        #"views/report_stockinventory.xml"
+    ],
     "pre_init_hook": "pre_init_hook",
     "license": "AGPL-3",
     "installable": True,
