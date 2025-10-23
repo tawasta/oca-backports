@@ -19,7 +19,10 @@ class WizStockBarcodesRead(models.AbstractModel):
 
     def _process_ai_01(self, gs1_list):
         """Packaging"""
-        return self.process_barcode_packaging_id()
+
+        # Treat AI 01 as product identification first
+        return self._process_ai_02(gs1_list)
+        # return self.process_barcode_packaging_id()
 
     def _process_ai_02(self, gs1_list):
         """Product identification"""
