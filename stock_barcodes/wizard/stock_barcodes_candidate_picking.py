@@ -34,6 +34,9 @@ class WizCandidatePicking(models.TransientModel):
     date = fields.Datetime(
         related="picking_id.date", readonly=True, string="Creation Date"
     )
+    origin = fields.Char(
+        related="picking_id.origin", readonly=True, string="Source Document"
+    )
     product_qty_reserved = fields.Float(
         "Reserved",
         compute="_compute_picking_quantity",
