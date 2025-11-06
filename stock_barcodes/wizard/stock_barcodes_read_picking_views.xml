@@ -63,6 +63,7 @@
                         <field name="date" />
                         <field name="state" />
                         <field name="picking_id" />
+                        <field name="wiz_barcode_id"/>
                         <field name="wiz_picking_id" />
                         <field name="product_qty_reserved" />
                         <field name="product_uom_qty" />
@@ -72,6 +73,15 @@
                         <field name="note" />
                         <templates>
                             <t t-name="kanban-box">
+                                <div class="fw-bold">
+                                    <t t-out="record.name.value"/>
+                                </div>
+                                <div>
+                                    <t t-if="record.partner_id.value">Partner: <t t-out="record.partner_id.value"/></t>
+                                </div>
+                                <div>
+                                    <t t-if="record.state.value">State: <t t-out="record.state.value"/></t>
+                                </div>                            
                                 <div
                                     t-if="!widget.isHtmlEmpty(record.note.raw_value)"
                                     t-att-class="'oe_kanban_color_alert' + (record.is_pending.raw_value == false ? ' bg-success' : '')"
@@ -92,6 +102,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                <button
+                                    type="object"
+                                    name="action_lock_picking"
+                                    class="btn btn-sm btn-primary mt-2 w-100"
+                                    t-attf-context="{'picking_id': {{ record.picking_id.raw_value }}, 'wiz_barcode_id': {{ record.wiz_barcode_id.raw_value }}}"
+                                >
+                                    Select this picking
+                                </button>                                
                             </t>
                         </templates>
                     </kanban>
