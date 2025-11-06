@@ -774,11 +774,11 @@ class WizStockBarcodesReadPicking(models.TransientModel):
         if not self.picking_id:
             if not self._search_candidate_picking():
                 self._set_messagge_info(
-                    "info", _("Click on picking pushpin to lock it")
+                    "info", _("No picking found with scanned values")
                 )
                 return False
         if self.picking_id and self.picking_id != self._candidate_picking_selected():
-            self._set_messagge_info("info", _("Click on picking pushpin to lock it"))
+            self._set_messagge_info("info", _("Please select the picking to work on"))
             return False
         return res
 

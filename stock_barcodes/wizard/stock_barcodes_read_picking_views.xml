@@ -58,58 +58,70 @@
                     options="{'always_reload': True}"
                 >
                     <kanban>
-                        <field name="name" />
-                        <field name="partner_id" />
-                        <field name="date" />
-                        <field name="state" />
-                        <field name="picking_id" />
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                        <field name="date"/>
+                        <field name="state"/>
+                        <field name="picking_id"/>
                         <field name="wiz_barcode_id"/>
-                        <field name="wiz_picking_id" />
-                        <field name="product_qty_reserved" />
-                        <field name="product_uom_qty" />
-                        <field name="product_qty_done" />
-                        <field name="scan_count" />
-                        <field name="is_pending" />
-                        <field name="note" />
+                        <field name="wiz_picking_id"/>
+                        <field name="product_qty_reserved"/>
+                        <field name="product_uom_qty"/>
+                        <field name="product_qty_done"/>
+                        <field name="scan_count"/>
+                        <field name="is_pending"/>
+                        <field name="note"/>
+                        <field name="origin" />
+
                         <templates>
                             <t t-name="kanban-box">
-                                <div class="fw-bold">
-                                    <t t-out="record.name.value"/>
-                                </div>
-                                <div>
-                                    <t t-if="record.partner_id.value">Partner: <t t-out="record.partner_id.value"/></t>
-                                </div>
-                                <div>
-                                    <t t-if="record.state.value">State: <t t-out="record.state.value"/></t>
-                                </div>                            
-                                <div
-                                    t-if="!widget.isHtmlEmpty(record.note.raw_value)"
-                                    t-att-class="'oe_kanban_color_alert' + (record.is_pending.raw_value == false ? ' bg-success' : '')"
-                                >
+                                    <!-- Picking & Partner -->
                                     <div class="oe_kanban_details p-2">
-                                        <field
-                                            name="scan_count"
-                                            invisible="1"
-                                            force_save="1"
-                                        />
-                                        <div
-                                            class="fw-bold text-center text-danger fst-italic"
-                                        >
-                                            <t
-                                                t-out="record.note.value"
-                                                invisible="context.get('hide_note', False)"
-                                            />
-                                        </div>
+                                        <strong class="text-primary"><field name="picking_id"/></strong><br/>
+                                        <span class="text-muted"><field name="partner_id"/></span><br/>
+                                        <span class="text-muted" t-if="record.origin.value != ''"><field name="origin"/></span>
                                     </div>
-                                </div>
-                                <button
-                                    type="object"
-                                    name="action_lock_picking"
-                                    class="btn btn-sm btn-primary mt-2 w-100"
-                                    t-attf-context="{'picking_id': {{ record.picking_id.raw_value }}, 'wiz_barcode_id': {{ record.wiz_barcode_id.raw_value }}}"
-                                >
-                                    Select this picking
-                                </button>                                
+                        
+                                    <!-- Date & State -->
+                                    <div class="oe_kanban_details p-2">
+                                        <small class="text-info">Scheduled date</small><br/>
+                                        <span class="text-success"><field name="date"/></span><br/>
+                                    </div>
+                        
+                                    <!-- Demand / Done -->
+                                    <div class="oe_kanban_details p-2">
+                                        <small class="text-info">Reserved / Done</small><br/>
+                                        <span class="fw-bold">
+                                            <field name="product_qty_reserved"/> / <field name="product_qty_done"/>
+                                        </span>
+                                    </div>
+                        
+                                    <!-- Note -->
+                                    <div>
+                                        <field name="scan_count" invisible="1" force_save="1"/>
+                                        <small class="text-info">Note</small><br/>
+                        
+                                        <div t-if="!widget.isHtmlEmpty(record.note.raw_value)" class="fw-bold fst-italic">
+                                            <t t-out="record.note.value" invisible="context.get('hide_note', False)"/>
+                                        </div>
+                                        <div t-else="">-</div>
+                                    </div>
+                        
+                                    <!-- Select Picking Button -->
+                                    <div t-if="record.wiz_picking_id.value == ''">
+                                        <button
+                                            type="object"
+                                            name="action_lock_picking"
+                                            class="btn btn-sm btn-info mt-2 w-100 oe_kanban_action oe_kanban_action_button"
+                                            t-att-context="{
+                                                'picking_id': record.picking_id.raw_value,
+                                                'wiz_barcode_id': record.wiz_barcode_id.raw_value
+                                            }"
+                                        >
+                                            Select this picking
+                                        </button>
+                                    </div>                     
+                        
                             </t>
                         </templates>
                     </kanban>
