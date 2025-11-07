@@ -1,6 +1,6 @@
 # Copyright 2023 Tecnativa - Sergio Teruel
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from odoo import api, models
+from odoo import api, fields, models
 
 MODEL_UPDATE_INVENTORY = ["wiz.stock.barcodes.read.inventory"]
 
@@ -8,6 +8,8 @@ MODEL_UPDATE_INVENTORY = ["wiz.stock.barcodes.read.inventory"]
 class StockQuant(models.Model):
     _name = "stock.quant"
     _inherit = ["stock.quant", "barcodes.barcode_events_mixin"]
+
+    remove_quantity = fields.Integer(default=0)
 
     def action_barcode_inventory_quant_unlink(self):
         self.with_context(inventory_mode=True).action_clear_inventory_quantity()
@@ -62,6 +64,11 @@ class StockQuant(models.Model):
             },
         )
 
+    def operation_quantities_decrease(self):
+        self.write({"remove_quantity": self.remove_quantity - 1})
+        self.write({"inventory_quantity": self.remove_quantity})
+        self.enable_current_operations()
+
     def operation_quantities_rest(self):
         self.write({"inventory_quantity": self.inventory_quantity - 1})
         self.enable_current_operations()
@@ -77,7 +84,14 @@ class StockQuant(models.Model):
             "actions_barcode",
             {"apply_inventory": True},
         )
+
+        for quant in self:
+            quant.remove_quantity = quant.quantity
         return res
+
+    @api.onchange("inventory_quantity_auto_apply")
+    def onchange_auto_apply_quantity(self):
+        self.remove_quantity = self.inventory_quantity_auto_apply
 
     @api.model
     def _get_forbidden_fields_write(self):
