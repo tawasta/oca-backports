@@ -1,5 +1,6 @@
 # Copyright 2019 Sergio Teruel <sergio.teruel@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+import re
 from odoo import _, api, models
 from odoo.tools import check_barcode_encoding
 
@@ -19,7 +20,10 @@ class WizStockBarcodesRead(models.AbstractModel):
 
     def _process_ai_01(self, gs1_list):
         """Packaging"""
-        return self.process_barcode_packaging_id()
+
+        # Treat AI 01 as product identification first
+        return self._process_ai_02(gs1_list)
+        # return self.process_barcode_packaging_id()
 
     def _process_ai_02(self, gs1_list):
         """Product identification"""
@@ -149,6 +153,9 @@ class WizStockBarcodesRead(models.AbstractModel):
             and nomenclature.gs1_separator_fnc1 in barcode
             or not self._ean_barcode_valid(barcode)
         ):
+            # Normalize the barcode, so the parser will understand barcodes with parentheses
+            barcode = re.sub(r'\D', '', barcode)
+
             gs1_list = nomenclature.parse_barcode(barcode)
         if gs1_list is None:
             return super().process_barcode(barcode)

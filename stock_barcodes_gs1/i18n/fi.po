@@ -1,0 +1,61 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_barcodes_gs1
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0-20250725\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-24 12:56+0000\n"
+"PO-Revision-Date: 2025-10-24 15:57+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
+
+#. module: stock_barcodes_gs1
+#. odoo-python
+#: code:addons/stock_barcodes_gs1/wizard/stock_barcodes_read.py:0
+#, fuzzy, python-format
+msgid "({ai}){barcode} Not found"
+msgstr "({ai}){barcode} Ei löydy"
+
+#. module: stock_barcodes_gs1
+#. odoo-python
+#: code:addons/stock_barcodes_gs1/wizard/stock_barcodes_read.py:0
+#, fuzzy, python-format
+msgid "AI GS1 ({ai}) Not implemented"
+msgstr "AI GS1 ({ai}) Ei toteutettu"
+
+#. module: stock_barcodes_gs1
+#: model:ir.model,name:stock_barcodes_gs1.model_barcode_nomenclature
+msgid "Barcode Nomenclature"
+msgstr "Viivakoodinimikkeistö"
+
+#. module: stock_barcodes_gs1
+#: model:ir.model,name:stock_barcodes_gs1.model_barcode_rule
+msgid "Barcode Rule"
+msgstr "Viivakoodisääntö"
+
+#. module: stock_barcodes_gs1
+#. odoo-python
+#: code:addons/stock_barcodes_gs1/wizard/stock_barcodes_read.py:0
+#, python-format
+msgid "Review and confirm"
+msgstr "Tarkista ja vahvista"
+
+#. module: stock_barcodes_gs1
+#: model:ir.model.fields,field_description:stock_barcodes_gs1.field_barcode_rule__use_weight_as_unit
+#, fuzzy
+msgid "Use Weight As Unit"
+msgstr "Käytä painoa yksikkönä"
+
+#. module: stock_barcodes_gs1
+#: model:ir.model,name:stock_barcodes_gs1.model_wiz_stock_barcodes_read
+#, fuzzy
+msgid "Wizard to read barcode"
+msgstr "Ohjattu viivakoodin lukeminen"
