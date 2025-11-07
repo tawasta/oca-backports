@@ -148,7 +148,7 @@
                                             </div>
                                         </div>
                                         <div
-                                            t-attf-class="row oe_kanban_operations oe_kanban_operations-#{record.id.raw_value} d-none"
+                                            t-attf-class="row oe_kanban_operations oe_kanban_operations-#{record.id.raw_value}"
                                         >
                                             <div
                                                 class="d-flex justify-content-end align-items-center"

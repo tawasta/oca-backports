@@ -34,7 +34,7 @@ class WizStockBarcodesReadInventory(models.TransientModel):
     def _compute_inventory_quant_ids(self):
         for wiz in self:
             domain = [
-                ("user_id", "=", self.env.user.id),
+#                ("user_id", "=", self.env.user.id),
                 ("inventory_date", "<=", fields.Date.context_today(self)),
             ]
             if wiz.display_read_quant:
