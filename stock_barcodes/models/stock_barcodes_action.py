@@ -148,9 +148,6 @@ class StockBarcodesAction(models.Model):
         if self.context:
             ctx.update(safe_eval(self.context))
         if action_context.get("remove_inventory_mode", False):
-            print("REMOVE INVENTORY MODE")
-#        if (action_context.get("remove_inventory_mode", False) and
-#            not action_context.get("inventory_mode", False)):
             action = self.open_remove_inventory_action(ctx)
         if action_context.get("inventory_mode", False):
             action = self.open_inventory_action(ctx)
