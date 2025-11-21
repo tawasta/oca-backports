@@ -10,6 +10,7 @@ class StockQuant(models.Model):
     _inherit = ["stock.quant", "barcodes.barcode_events_mixin"]
 
     remove_quantity = fields.Integer(default=0)
+    expiry_message = fields.Text(related="lot_id.expiry_message")
 
     def action_barcode_inventory_quant_unlink(self):
         self.with_context(inventory_mode=True).action_clear_inventory_quantity()

@@ -1,5 +1,6 @@
 # Copyright 2019 Sergio Teruel <sergio.teruel@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+import datetime
 import logging
 
 from odoo import _, api, fields, models
@@ -100,6 +101,7 @@ class WizStockBarcodesRead(models.AbstractModel):
     product_in_stock = fields.Float(compute="_compute_product_in_stock")
     show_stock = fields.Boolean(related="option_group_id.show_stock")
     show_owner = fields.Boolean(related="option_group_id.show_owner")
+    expiry_message = fields.Text()
 
     @api.depends("product_id", "owner_id", "package_id")
     def _compute_product_in_stock(self):
@@ -200,6 +202,60 @@ class WizStockBarcodesRead(models.AbstractModel):
             else:
                 self.message = "%s" % message
 
+    def product_usable_dates_notification(self, product, lot):
+        """Check expiration, best before and remove date of a product"""
+        l_expiration_date, l_best_before, l_removal_date = (
+            lot.expiration_date,
+            lot.use_date,
+            lot.removal_date,
+        )
+        p_expiration_time, p_best_before, p_removal_time = (
+            product.expiration_time,
+            product.use_time,
+            product.removal_time,
+        )
+
+        today = fields.Datetime.today()
+        lot_message = ""
+        message = []
+
+        #company = self.picking_type_id.company_id
+        company = self.env.user.company_id
+
+        if (
+            l_expiration_date
+            and l_expiration_date < today + datetime.timedelta(days=p_expiration_time)
+            and company.scanner_exp_date_note
+        ):
+            message.append("expiration date")
+
+        if (
+            l_removal_date
+            and l_removal_date < today + datetime.timedelta(days=p_removal_time)
+            and company.scanner_rem_date_note
+        ):
+            message.append("removal date")
+
+        if (
+            l_best_before
+            and l_best_before < today + datetime.timedelta(days=p_best_before)
+            and company.scanner_bes_date_note
+        ):
+            message.append("best before date")
+
+        if len(message) > 1:
+            message = "{} and {}".format(", ".join(message[:-1]), message[-1])
+        elif message:
+            message = f"{message[0]}"
+
+        if message:
+            lot_message = (
+                f"The scanned lot {lot.name} has reached its {message} "
+                f"for {product.display_name} product"
+            )
+
+        return lot_message
+
     def process_barcode_location_id(self):
         location = self.env["stock.location"].search(self._barcode_domain(self.barcode))
         if location:
@@ -255,6 +311,11 @@ class WizStockBarcodesRead(models.AbstractModel):
                 lot_domain.append(("product_id", "=", self.product_id.id))
             lot = self.env["stock.lot"].search(lot_domain)
             if len(lot) == 1:
+                usable_message = self.product_usable_dates_notification(lot.product_id, lot)
+
+                if self._name == "wiz.stock.barcodes.read.inventory" and lot:
+                    lot.expiry_message = usable_message
+
                 if self.option_group_id.fill_fields_from_lot:
                     quant_domain = [
                         ("lot_id.name", "=", self.barcode),
@@ -268,6 +329,7 @@ class WizStockBarcodesRead(models.AbstractModel):
                     if self.owner_id:
                         quant_domain.append(("owner_id", "=", self.owner_id.id))
                     quants = self.env["stock.quant"].search(quant_domain)
+
                     if (
                         not self._name == "wiz.stock.barcodes.read.inventory"
                         and not quants
@@ -289,6 +351,7 @@ class WizStockBarcodesRead(models.AbstractModel):
                 else:
                     self.product_id = lot.product_id
                     self.action_lot_scaned_post(lot)
+
                 return True
             elif lot:
                 self._set_messagge_info(
