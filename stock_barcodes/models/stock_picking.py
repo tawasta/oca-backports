@@ -64,9 +64,10 @@ class StockPicking(models.Model):
         if res is True and self.env.context.get("show_picking_type_action_tree", False):
             res = self[:1].picking_type_id.get_action_picking_tree_ready()
 
-        if self.state == "done":
-            self.env["bus.bus"]._sendone(
-                "stock_barcodes_scan", "actions_barcode", {"valid_picking": True}
-            )
+        for picking in self:
+            if picking.state == "done":
+                self.env["bus.bus"]._sendone(
+                    "stock_barcodes_scan", "actions_barcode", {"valid_picking": True}
+                )
 
         return res
