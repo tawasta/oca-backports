@@ -166,6 +166,111 @@
                                                 >+1
                                                 </button>
                                             </div>
+
+                                            <div class="d-flex justify-content-end align-items-center">
+                                                Type stock quantity
+                                                <field name="add_move_quantities" widget="boolean_toggle" />
+                                            </div>
+                                            <t invisible="not add_move_quantities">
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center"
+                                                    style="margin-top: 0.2em;"
+                                                >
+                                                <div class="column">
+                                                    <button
+                                                        name="null_quantity"
+                                                        type="object"
+                                                        class="btn btn-lg btn-op-rest text-white ms-1 ms-sm-1 mx-3"
+                                                    >C
+                                                    </button>
+
+                                                    <button
+                                                        name="append_quantity_0"
+                                                        type="object"
+                                                        class="btn btn-lg btn-op-rest text-white ms-1 ms-sm-1 mx-4"
+                                                    >0
+                                                    </button>
+                                                </div>
+                                                </div>
+
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center"
+                                                    style="margin-top: 0.2em;"
+                                                >
+                                                <div class="column">
+                                                    <button
+                                                        name="append_quantity_1"
+                                                        type="object"
+                                                        class="btn btn-lg btn-op-rest text-white ms-1 ms-sm-1"
+                                                    >1
+                                                    </button>
+                                                    <button
+                                                        name="append_quantity_2"
+                                                        type="object"
+                                                        class="btn btn-lg btn-op-rest text-white ms-1 ms-sm-1 mx-1"
+                                                    >2
+                                                    </button>
+                                                    <button
+                                                        name="append_quantity_3"
+                                                        type="object"
+                                                        class="btn btn-lg btn-op-sum text-white"
+                                                    >3
+                                                    </button>
+                                                </div>
+                                                </div>
+
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center"
+                                                    style="margin-top: 0.2em;"
+                                                >
+                                                <div class="column">
+                                                    <button
+                                                        name="append_quantity_4"
+                                                        type="object"
+                                                        class="btn btn-lg btn-op-rest text-white ms-1 ms-sm-1"
+                                                    >4
+                                                    </button>
+                                                    <button
+                                                        name="append_quantity_5"
+                                                        type="object"
+                                                        class="btn btn-lg btn-op-rest text-white ms-1 ms-sm-1 mx-1"
+                                                    >5
+                                                    </button>
+                                                    <button
+                                                        name="append_quantity_6"
+                                                        type="object"
+                                                        class="btn btn-lg btn-op-sum text-white"
+                                                    >6
+                                                    </button>
+                                                </div>
+                                                </div>
+
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center"
+                                                    style="margin-top: 0.2em;"
+                                                >
+                                                <div class="column">
+                                                    <button
+                                                        name="append_quantity_7"
+                                                        type="object"
+                                                        class="btn btn-lg btn-op-rest text-white ms-1 ms-sm-1"
+                                                    >7
+                                                    </button>
+                                                    <button
+                                                        name="append_quantity_8"
+                                                        type="object"
+                                                        class="btn btn-lg btn-op-rest text-white ms-1 ms-sm-1 mx-1"
+                                                    >8
+                                                    </button>
+                                                    <button
+                                                        name="append_quantity_9"
+                                                        type="object"
+                                                        class="btn btn-lg btn-op-sum text-white"
+                                                    >9
+                                                    </button>
+                                                </div>
+                                                </div>
+                                            </t>
                                         </div>
                                     </div>
                                 </t>
