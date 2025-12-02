@@ -11,6 +11,7 @@ class StockQuant(models.Model):
 
     remove_quantity = fields.Integer(default=0)
     expiry_message = fields.Text(related="lot_id.expiry_message")
+    older_quant_message = fields.Text(related="lot_id.older_quant_message")
     add_move_quantities = fields.Boolean(default=False)
 
     def action_barcode_inventory_quant_unlink(self):

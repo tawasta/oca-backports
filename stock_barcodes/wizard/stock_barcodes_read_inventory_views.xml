@@ -440,6 +440,9 @@
                                             <h2 class="col-8 col-md-10 d-flex justify-content-start align-items-center" style="color: red;">
                                                 <field name="expiry_message"/>
                                             </h2>
+                                            <h2 class="col-8 col-md-10 d-flex justify-content-start align-items-center" style="color: orange;">
+                                                <field name="older_quant_message"/>
+                                            </h2>
 
                                             <div
                                                 class="col-4 col-md-2 d-flex justify-content-end align-items-center"
