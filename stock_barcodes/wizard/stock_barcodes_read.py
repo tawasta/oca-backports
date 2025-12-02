@@ -101,7 +101,6 @@ class WizStockBarcodesRead(models.AbstractModel):
     product_in_stock = fields.Float(compute="_compute_product_in_stock")
     show_stock = fields.Boolean(related="option_group_id.show_stock")
     show_owner = fields.Boolean(related="option_group_id.show_owner")
-    expiry_message = fields.Text()
 
     @api.depends("product_id", "owner_id", "package_id")
     def _compute_product_in_stock(self):
@@ -304,6 +303,28 @@ class WizStockBarcodesRead(models.AbstractModel):
             return True
         return False
 
+    def _get_older_quants(self, product, quants):
+        other_quants = self.env["stock.quant"].search(
+            [
+                ("product_id", "=", product.id),
+                ("quantity", ">", 0),
+            ]
+        )
+
+        other_quants = other_quants - quants
+        found_quants = []
+
+        for quant in other_quants:
+            other_date = quant.lot_id.expiration_date
+            if any(
+                q.lot_id.expiration_date
+                and other_date
+                and q.lot_id.expiration_date > other_date
+                for q in quants
+            ):
+                found_quants.append(quant)
+        return found_quants
+
     def process_barcode_lot_id(self):
         if self.env.user.has_group("stock.group_production_lot"):
             lot_domain = [("name", "=", self.barcode)]
@@ -311,7 +332,44 @@ class WizStockBarcodesRead(models.AbstractModel):
                 lot_domain.append(("product_id", "=", self.product_id.id))
             lot = self.env["stock.lot"].search(lot_domain)
             if len(lot) == 1:
+                lot.older_quant_message = ""
+                lot.expiry_message = ""
                 usable_message = self.product_usable_dates_notification(lot.product_id, lot)
+
+                check_quants = lot.quant_ids.filtered(lambda q: q.quantity > 0)
+
+                if lot and check_quants and [q.lot_id for q in check_quants]:
+                    # See if there are old quants available
+                    older_quants = self._get_older_quants(lot.product_id, check_quants)
+
+                    bypass_check = (
+                        self.env["ir.config_parameter"]
+                        .sudo()
+                        .get_param("bypass_older_quants_check")
+                    )
+
+                    if (older_quants and self._name == "wiz.stock.barcodes.read.inventory"
+                            and not bypass_check):
+                        locations = ", ".join(
+                            [q.location_id.display_name for q in older_quants]
+                        )
+                        if len(older_quants) > 1 and len([q.lot_id.id for q in older_quants]) > 1:
+                            lot_display = ", ".join(
+                                [q.lot_id.name for q in older_quants]
+                            )
+                        else:
+                            lot_display = older_quants[0].lot_id and older_quants[0].lot_id.name or ""
+
+                        if lot_display:
+                            lot_message = (
+                                "The product {prod} has stock in {loc} for lot {lot} that expires sooner. "
+                                "Please use it first.".format(
+                                    prod=lot.product_id.display_name,
+                                    loc=locations,
+                                    lot=lot_display,
+                                )
+                            )
+                            lot.older_quant_message = lot_message
 
                 if self._name == "wiz.stock.barcodes.read.inventory" and lot:
                     lot.expiry_message = usable_message
@@ -329,7 +387,6 @@ class WizStockBarcodesRead(models.AbstractModel):
                     if self.owner_id:
                         quant_domain.append(("owner_id", "=", self.owner_id.id))
                     quants = self.env["stock.quant"].search(quant_domain)
-
                     if (
                         not self._name == "wiz.stock.barcodes.read.inventory"
                         and not quants

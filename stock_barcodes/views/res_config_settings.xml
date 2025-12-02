@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.view.form.scanner.date.note</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="stock.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <setting id="warning_info" position="after">
+                <setting
+                    id="stock_report_exp_note"
+                    string="Scanner note about expiration date"
+                    help="Set note about expiration date for product scanner"
+                >
+                    <field name="scanner_exp_date_note" />
+                </setting>
+
+                <setting
+                    id="stock_report_rem_note"
+                    string="Scanner note about removal date"
+                    help="Set note about removal date for product scanner"
+                >
+                    <field name="scanner_rem_date_note" />
+                </setting>
+
+                <setting
+                    id="stock_report_bes_note"
+                    string="Scanner note about best before date"
+                    help="Set note about best before date for product scanner"
+                >
+                    <field name="scanner_bes_date_note" />
+                </setting>
+            </setting>
+        </field>
+    </record>
+</odoo>
