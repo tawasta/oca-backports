@@ -1,3 +1,5 @@
+from . import res_company
+from . import res_config_settings
 from . import stock_barcodes_action
 from . import stock_barcodes_option
 from . import stock_lot
