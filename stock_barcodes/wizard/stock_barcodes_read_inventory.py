@@ -39,7 +39,7 @@ class WizStockBarcodesReadInventory(models.TransientModel):
             ]
             if wiz.display_read_quant:
                 domain.append(("inventory_quantity_set", "=", True))
-                order = "write_date DESC"
+                order = "create_date DESC"
             else:
                 domain.append(("inventory_quantity_set", "=", False))
                 order = None
