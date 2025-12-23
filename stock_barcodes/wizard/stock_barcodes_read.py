@@ -1,6 +1,5 @@
 # Copyright 2019 Sergio Teruel <sergio.teruel@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-import datetime
 import logging
 
 from odoo import _, api, fields, models
@@ -201,60 +200,6 @@ class WizStockBarcodesRead(models.AbstractModel):
             else:
                 self.message = "%s" % message
 
-    def product_usable_dates_notification(self, product, lot):
-        """Check expiration, best before and remove date of a product"""
-        l_expiration_date, l_best_before, l_removal_date = (
-            lot.expiration_date,
-            lot.use_date,
-            lot.removal_date,
-        )
-        p_expiration_time, p_best_before, p_removal_time = (
-            product.expiration_time,
-            product.use_time,
-            product.removal_time,
-        )
-
-        today = fields.Datetime.today()
-        lot_message = ""
-        message = []
-
-        #company = self.picking_type_id.company_id
-        company = self.env.user.company_id
-
-        if (
-            l_expiration_date
-            and l_expiration_date < today + datetime.timedelta(days=p_expiration_time)
-            and company.scanner_exp_date_note
-        ):
-            message.append("expiration date")
-
-        if (
-            l_removal_date
-            and l_removal_date < today + datetime.timedelta(days=p_removal_time)
-            and company.scanner_rem_date_note
-        ):
-            message.append("removal date")
-
-        if (
-            l_best_before
-            and l_best_before < today + datetime.timedelta(days=p_best_before)
-            and company.scanner_bes_date_note
-        ):
-            message.append("best before date")
-
-        if len(message) > 1:
-            message = "{} and {}".format(", ".join(message[:-1]), message[-1])
-        elif message:
-            message = f"{message[0]}"
-
-        if message:
-            lot_message = (
-                f"The scanned lot {lot.name} has reached its {message} "
-                f"for {product.display_name} product"
-            )
-
-        return lot_message
-
     def process_barcode_location_id(self):
         location = self.env["stock.location"].search(self._barcode_domain(self.barcode))
         if location:
@@ -303,28 +248,6 @@ class WizStockBarcodesRead(models.AbstractModel):
             return True
         return False
 
-    def _get_older_quants(self, product, quants):
-        other_quants = self.env["stock.quant"].search(
-            [
-                ("product_id", "=", product.id),
-                ("quantity", ">", 0),
-            ]
-        )
-
-        other_quants = other_quants - quants
-        found_quants = []
-
-        for quant in other_quants:
-            other_date = quant.lot_id.expiration_date
-            if any(
-                q.lot_id.expiration_date
-                and other_date
-                and q.lot_id.expiration_date > other_date
-                for q in quants
-            ):
-                found_quants.append(quant)
-        return found_quants
-
     def process_barcode_lot_id(self):
         if self.env.user.has_group("stock.group_production_lot"):
             lot_domain = [("name", "=", self.barcode)]
@@ -332,48 +255,6 @@ class WizStockBarcodesRead(models.AbstractModel):
                 lot_domain.append(("product_id", "=", self.product_id.id))
             lot = self.env["stock.lot"].search(lot_domain)
             if len(lot) == 1:
-                lot.older_quant_message = ""
-                lot.expiry_message = ""
-                usable_message = self.product_usable_dates_notification(lot.product_id, lot)
-
-                check_quants = lot.quant_ids.filtered(lambda q: q.quantity > 0)
-
-                if lot and check_quants and [q.lot_id for q in check_quants]:
-                    # See if there are old quants available
-                    older_quants = self._get_older_quants(lot.product_id, check_quants)
-
-                    bypass_check = (
-                        self.env["ir.config_parameter"]
-                        .sudo()
-                        .get_param("bypass_older_quants_check")
-                    )
-
-                    if (older_quants and self._name == "wiz.stock.barcodes.read.inventory"
-                            and not bypass_check):
-                        locations = ", ".join(
-                            [q.location_id.display_name for q in older_quants]
-                        )
-                        if len(older_quants) > 1 and len([q.lot_id.id for q in older_quants]) > 1:
-                            lot_display = ", ".join(
-                                [q.lot_id.name for q in older_quants]
-                            )
-                        else:
-                            lot_display = older_quants[0].lot_id and older_quants[0].lot_id.name or ""
-
-                        if lot_display:
-                            lot_message = (
-                                "The product {prod} has stock in {loc} for lot {lot} that expires sooner. "
-                                "Please use it first.".format(
-                                    prod=lot.product_id.display_name,
-                                    loc=locations,
-                                    lot=lot_display,
-                                )
-                            )
-                            lot.older_quant_message = lot_message
-
-                if self._name == "wiz.stock.barcodes.read.inventory" and lot:
-                    lot.expiry_message = usable_message
-
                 if self.option_group_id.fill_fields_from_lot:
                     quant_domain = [
                         ("lot_id.name", "=", self.barcode),
@@ -408,7 +289,6 @@ class WizStockBarcodesRead(models.AbstractModel):
                 else:
                     self.product_id = lot.product_id
                     self.action_lot_scaned_post(lot)
-
                 return True
             elif lot:
                 self._set_messagge_info(
@@ -819,12 +699,14 @@ class WizStockBarcodesRead(models.AbstractModel):
 
     def open_actions(self):
         self.display_menu = True
-        return self.env.ref(
+        return self.env["ir.actions.actions"]._for_xml_id(
             "stock_barcodes.action_stock_barcodes_action_client"
-        ).read()[0]
+        )
 
     def action_back(self):
-        return self.env.ref("stock.stock_picking_type_action").read()[0]
+        return self.env["ir.actions.actions"]._for_xml_id(
+            "stock.stock_picking_type_action"
+        )
 
     def open_records(self):
         action = self.action_ids
