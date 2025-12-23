@@ -34,12 +34,12 @@ class WizStockBarcodesReadInventory(models.TransientModel):
     def _compute_inventory_quant_ids(self):
         for wiz in self:
             domain = [
-#                ("user_id", "=", self.env.user.id),
+                ("user_id", "=", self.env.user.id),
                 ("inventory_date", "<=", fields.Date.context_today(self)),
             ]
             if wiz.display_read_quant:
                 domain.append(("inventory_quantity_set", "=", True))
-                order = "create_date DESC"
+                order = "write_date DESC"
             else:
                 domain.append(("inventory_quantity_set", "=", False))
                 order = None
@@ -110,23 +110,6 @@ class WizStockBarcodesReadInventory(models.TransientModel):
             quant = StockQuant.with_context(inventory_mode=True).create(
                 self._prepare_stock_quant_values()
             )
-
-        inventory_option_group = self.env.ref(
-            "stock_barcodes.stock_barcodes_option_group_inventory"
-        )
-
-        if self.option_group_id.id == inventory_option_group.id:
-            quant.remove_quantity = quant.quantity
-            quant.inventory_quantity = 0
-
-        remove_option_group = self.env.ref(
-            "stock_barcodes.stock_barcodes_option_group_remove_inventory"
-        )
-
-        if self.option_group_id.id == remove_option_group.id:
-            quant.remove_quantity = quant.quantity
-            quant.inventory_quantity = quant.quantity
-
         self.inventory_product_qty = quant.quantity
         return True
 
