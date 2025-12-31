@@ -458,11 +458,11 @@
         <field name="step">1</field>
         <field name="sequence">10</field>
         <field name="field_name">location_id</field>
-        <field name="filled_default">True</field>
+        <field name="filled_default">False</field>
         <field name="forced">False</field>
-        <field name="to_scan">False</field>
+        <field name="to_scan">True</field>
         <field name="required">True</field>
-        <field name="clean_after_done">False</field>
+        <field name="clean_after_done">True</field>
         <field
             name="option_group_id"
             ref="stock_barcodes.stock_barcodes_option_group_inventory"
@@ -506,7 +506,7 @@
     </record>
     <record id="stock_barcodes_option_lot_id_inventory" model="stock.barcodes.option">
         <field name="name">Lot</field>
-        <field name="step">2</field>
+        <field name="step">3</field>
         <field name="sequence">30</field>
         <field name="field_name">lot_id</field>
         <field name="filled_default">False</field>
@@ -530,13 +530,14 @@
 <!--         <field name="filled_default">False</field> -->
 <!--         <field name="forced">False</field> -->
 <!--         <field name="to_scan">False</field> -->
-<!--         <field name="required">False</field> -->
+<!--         <field name="required">True</field> -->
 <!--         <field name="clean_after_done">True</field> -->
 <!--         <field -->
 <!--             name="option_group_id" -->
 <!--             ref="stock_barcodes.stock_barcodes_option_group_inventory" -->
 <!--         /> -->
 <!--     </record> -->
+
 
     <!-- Option group for Operations -->
     <record
