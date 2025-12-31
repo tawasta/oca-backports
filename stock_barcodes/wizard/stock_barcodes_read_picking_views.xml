@@ -81,13 +81,13 @@
                                         <span class="text-muted"><field name="partner_id"/></span><br/>
                                         <span class="text-muted" t-if="record.origin.value != ''"><field name="origin"/></span>
                                     </div>
-                        
+
                                     <!-- Date & State -->
                                     <div class="oe_kanban_details p-2">
                                         <small class="text-info">Scheduled date</small><br/>
                                         <span class="text-success"><field name="date"/></span><br/>
                                     </div>
-                        
+
                                     <!-- Demand / Done -->
                                     <div class="oe_kanban_details p-2">
                                         <small class="text-info">Reserved / Done</small><br/>
@@ -95,18 +95,24 @@
                                             <field name="product_qty_reserved"/> / <field name="product_qty_done"/>
                                         </span>
                                     </div>
-                        
+
                                     <!-- Note -->
                                     <div>
                                         <field name="scan_count" invisible="1" force_save="1"/>
                                         <small class="text-info">Note</small><br/>
-                        
+
                                         <div t-if="!widget.isHtmlEmpty(record.note.raw_value)" class="fw-bold fst-italic">
                                             <t t-out="record.note.value" invisible="context.get('hide_note', False)"/>
                                         </div>
                                         <div t-else="">-</div>
                                     </div>
-                        
+
+                                    <!-- Responsible -->
+                                    <div class="oe_kanban_details p-2">
+                                        <small class="text-info">Responsible</small><br/>
+                                        <span class="text-success"><field name="user_id"/></span><br/>
+                                    </div>
+
                                     <!-- Select Picking Button -->
                                     <div t-if="record.wiz_picking_id.value == ''">
                                         <button
@@ -120,8 +126,8 @@
                                         >
                                             Select this picking
                                         </button>
-                                    </div>                     
-                        
+                                    </div>
+
                             </t>
                         </templates>
                     </kanban>
