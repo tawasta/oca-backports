@@ -901,6 +901,8 @@ class WizStockBarcodesRead(models.AbstractModel):
                 context.get("no_increase_qty_picked", False) or self.manual_entry
             )
             force_create_move = context.get("force_create_move", False)
+            if self.option_group_id.code == "INT":
+                force_create_move = True
         res = self.with_context(
             no_increase_qty_picked=no_increase_qty_picked,
             force_create_move=force_create_move,
