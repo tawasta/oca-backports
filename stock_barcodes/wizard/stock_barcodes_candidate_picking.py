@@ -15,6 +15,10 @@ class WizCandidatePicking(models.TransientModel):
     picking_id = fields.Many2one(
         comodel_name="stock.picking", string="Picking", readonly=True
     )
+    user_id = fields.Many2one(
+        comodel_name="res.users",
+        related="picking_id.user_id",
+    )
     wiz_picking_id = fields.Many2one(
         comodel_name="stock.picking",
         related="wiz_barcode_id.picking_id",
