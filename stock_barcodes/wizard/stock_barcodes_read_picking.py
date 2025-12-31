@@ -591,7 +591,7 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             for sm in moves_todo
         )
         if (
-            not self.option_group_id.code == "REL" and self.option_group_id.code != "INT"
+            not self.option_group_id.code == "REL" and self.option_group_id.code not in ("INT", "IN")
             and not self.env.context.get("force_create_move", False)
             and not self.env.context.get("manual_picking", False)
             and float_compare(
