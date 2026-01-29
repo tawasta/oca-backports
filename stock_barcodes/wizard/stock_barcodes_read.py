@@ -327,6 +327,14 @@ class WizStockBarcodesRead(models.AbstractModel):
 
     def process_barcode_lot_id(self):
         if self.env.user.has_group("stock.group_production_lot"):
+            pattern = r"\((\d{2,3})\)([^\(]+)"
+            parsed_barcode = {
+                ai: value.strip() for ai, value in re.findall(pattern, self.barcode)
+            }
+            lot_name = parsed_barcode.get("10")
+            if lot_name:
+                self.barcode = lot_name
+
             lot_domain = [("name", "=", self.barcode)]
             if self.product_id:
                 lot_domain.append(("product_id", "=", self.product_id.id))
