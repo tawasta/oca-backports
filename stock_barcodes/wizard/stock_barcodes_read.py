@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 import datetime
 import logging
+import re
 
 from odoo import _, api, fields, models
 
