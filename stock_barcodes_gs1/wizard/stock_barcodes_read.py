@@ -154,7 +154,9 @@ class WizStockBarcodesRead(models.AbstractModel):
             or not self._ean_barcode_valid(barcode)
         ):
             # Normalize the barcode, so the parser will understand barcodes with parentheses
-            barcode = re.sub(r'\D', '', barcode)
+            barcode = re.sub(r'\W', '', barcode)
+            # TimoK: Old version below
+            #barcode = re.sub(r'\D', '', barcode)
 
             gs1_list = nomenclature.parse_barcode(barcode)
         if gs1_list is None:
