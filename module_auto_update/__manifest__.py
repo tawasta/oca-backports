@@ -8,11 +8,12 @@
     "version": "19.0.1.0.0",
     "category": "Extra Tools",
     "website": "https://github.com/tawasta/oca-backports",
-    "author": "LasLabs, Futural"
+    "author": "LasLabs,"
     "Juan José Scarafía, "
     "Tecnativa, "
     "ACSONE SA/NV, "
-    "Odoo Community Association (OCA)",
+    "Odoo Community Association (OCA),"
+    "Futural",
     "license": "LGPL-3",
     "installable": True,
     "uninstall_hook": "uninstall_hook",

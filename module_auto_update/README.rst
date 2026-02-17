@@ -91,9 +91,10 @@ Authors
 -------
 
 * LasLabs
-* FuturalJuan José Scarafía
+* Juan José Scarafía
 * Tecnativa
 * ACSONE SA/NV
+* Futural
 
 Contributors
 ------------
