@@ -5,7 +5,7 @@
     "name": "Product Last Price Info - Sale",
     "version": "19.0.1.0.0",
     "author": "AvanzOSC, Tecnativa, Odoo Community Association (OCA)",
-    "website": "https://github.com/OCA/sale-workflow",
+    "website": "https://github.com/tawasta/oca-backports",
     "category": "Sales",
     "license": "AGPL-3",
     "depends": ["sale_management"],
