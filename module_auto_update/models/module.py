@@ -31,7 +31,7 @@ def ensure_module_state(env, modules, state):
     if not modules:
         return
     env.cr.execute(
-        "SELECT name FROM ir_module_module " "WHERE id IN %s AND state != %s",
+        "SELECT name FROM ir_module_module WHERE id IN %s AND state != %s",
         (tuple(modules.ids), state),
     )
     names = [r[0] for r in env.cr.fetchall()]
@@ -127,9 +127,9 @@ class Module(models.Model):
             overwrite_existing_translations,
         )
 
-        tools.config[
-            "overwrite_existing_translations"
-        ] = overwrite_existing_translations
+        tools.config["overwrite_existing_translations"] = (
+            overwrite_existing_translations
+        )
 
         _logger.info("Updating modules list...")
         self.update_list()
