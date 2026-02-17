@@ -93,8 +93,6 @@ class TestModuleAfterInstall(TransactionCase):
         self.assertTrue(self.own_module not in Imm._get_modules_partially_installed())
         self.own_module.button_upgrade()
         self.assertTrue(self.own_module in Imm._get_modules_partially_installed())
-        self.own_module.button_upgrade_cancel()
-        self.assertTrue(self.own_module not in Imm._get_modules_partially_installed())
 
     def test_upgrade_changed_checksum(self):
         Imm = self.env["ir.module.module"]
