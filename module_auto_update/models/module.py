@@ -53,6 +53,7 @@ class Module(models.Model):
             DEFAULT_EXCLUDE_PATTERNS,
         )
         exclude_patterns = [p.strip() for p in exclude_patterns.split(",")]
+        # pylint disable:no-search-all
         keep_langs = self.env["res.lang"].search([]).mapped("code")
 
         module_path = get_module_path(self.name)
@@ -178,8 +179,9 @@ class Module(models.Model):
         if partial_modules:
             raise IncompleteUpgradeError(
                 "Checksum upgrade successful "
-                "but incomplete for the following modules: %s"
-                % ",".join(partial_modules.mapped("name"))
+                "but incomplete for the following modules: {}".format(
+                    ",".join(partial_modules.mapped("name"))
+                )
             )
 
         _logger.info("Checksum upgrade complete.")
