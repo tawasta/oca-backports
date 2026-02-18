@@ -39,8 +39,6 @@ class TestAddonHash(TransactionCase):
                 "i18n_extra/fr.po",
                 "i18n_extra/nl_NL.po",
                 "models/stuff.py",
-                "models/stuff.pyc",
-                "models/stuff.pyo",
                 "static/src/some.js",
             ],
         )
