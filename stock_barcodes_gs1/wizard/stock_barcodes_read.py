@@ -153,12 +153,37 @@ class WizStockBarcodesRead(models.AbstractModel):
             and nomenclature.gs1_separator_fnc1 in barcode
             or not self._ean_barcode_valid(barcode)
         ):
+            # TimoK: This parsing is added to extract (11) information from (10) part
+            # of barcode. Then for example in "(17)010170(10)123456(11)010130" barcode
+            # "(10)123456(11)010130" part is going to be read as "(10)123456" and
+            # "(11)010130" instead of just "(10)123456(11)010130". (11) information
+            # is still added to the scanned result, just in case.
+            pattern = r"\((\d{2,3})\)([^\(]+)"
+            parsed_result = {ai: value.strip() for ai, value in re.findall(pattern, barcode)}
+            production_date = parsed_result.get('11')
+            lot_name = parsed_result.get('10')
+
             # Normalize the barcode, so the parser will understand barcodes with parentheses
             barcode = re.sub(r'\W', '', barcode)
             # TimoK: Old version below
             #barcode = re.sub(r'\D', '', barcode)
 
             gs1_list = nomenclature.parse_barcode(barcode)
+
+            if production_date and lot_name and gs1_list:
+                for item in gs1_list:
+                    if item.get('ai') == '10':
+                        item['string_value'] = lot_name
+                        item['value'] = lot_name
+
+                production_date_item = {
+                    'rule': None,
+                    'ai': '11',
+                    'string_value': production_date,
+                    'value': production_date,
+                    'use_weight_as_unit': False
+                }
+                gs1_list.append(production_date_item)
         if gs1_list is None:
             return super().process_barcode(barcode)
         warning_msg_list = []
