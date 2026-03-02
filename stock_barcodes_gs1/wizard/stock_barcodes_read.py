@@ -175,15 +175,6 @@ class WizStockBarcodesRead(models.AbstractModel):
                     if item.get('ai') == '10':
                         item['string_value'] = lot_name
                         item['value'] = lot_name
-
-                production_date_item = {
-                    'rule': None,
-                    'ai': '11',
-                    'string_value': production_date,
-                    'value': production_date,
-                    'use_weight_as_unit': False
-                }
-                gs1_list.append(production_date_item)
         if gs1_list is None:
             return super().process_barcode(barcode)
         warning_msg_list = []
