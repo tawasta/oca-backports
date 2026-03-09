@@ -344,6 +344,20 @@ class WizStockBarcodesReadPicking(models.TransientModel):
                 self.action_show_step()
                 if keep_vals:
                     self.update_keep_values(keep_vals)
+
+            # Demand quantity is updated to reflect its stock move line quantities.
+            # This only applies to Internal transfers and Receipts (for now)
+            if self.option_group_id.code in ("INT", "IN"):
+                for move in self.picking_id.move_ids:
+                    lines_quantity = []
+                    for line in move.move_line_ids:
+                        if line.quantity:
+                            lines_quantity.append(line.quantity)
+                    if lines_quantity:
+                        lines_sum = sum(lines_quantity)
+                        if lines_sum > move.product_uom_qty:
+                            move.product_uom_qty = lines_sum
+
             # Force refresh candidate pickings to show green if not pending moves
             if not self.pending_move_ids:
                 self._set_candidate_pickings(self.picking_id)
