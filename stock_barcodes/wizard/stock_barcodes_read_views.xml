@@ -330,7 +330,6 @@
                                             force_save="1"
                                             nolabel="1"
                                             widget="numeric_step"
-                                            options="{'auto_select': True}"
                                         />
                                     </div>
                                 </div>
