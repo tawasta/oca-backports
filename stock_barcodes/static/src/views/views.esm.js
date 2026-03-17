@@ -148,17 +148,18 @@ function setupView() {
                         notification.add(_t("The transfer has been validated"), {
                             type: "success",
                         });
-                    } else if (payload.apply_inventory) {
-                        notification.add(
-                            _t("The inventory adjustment has been validated"),
-                            {
-                                type: "success",
-                            }
-                        );
-                        return actionService.doAction(
-                            "stock_barcodes.action_stock_barcodes_action_client"
-                        );
                     }
+                    //} else if (payload.apply_inventory) {
+                    //    notification.add(
+                    //        _t("The inventory adjustment has been validated"),
+                    //        {
+                    //            type: "success",
+                    //        }
+                    //    );
+                    //    return actionService.doAction(
+                    //        "stock_barcodes.action_stock_barcodes_action_client"
+                    //    );
+                    //}
                 } else if (type === "actions_barcode_notification") {
                     notification.add(_t(payload.message), {
                         type: payload.message_type,

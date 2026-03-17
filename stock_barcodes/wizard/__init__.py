@@ -4,3 +4,4 @@ from . import stock_barcodes_candidate_picking
 from . import stock_barcodes_read_picking
 from . import stock_barcodes_read_todo
 from . import stock_production_lot
+from . import stock_inventory_adjustment_name
