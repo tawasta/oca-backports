@@ -179,5 +179,6 @@ class WizStockBarcodesReadInventory(models.TransientModel):
         action = self.env["ir.actions.actions"]._for_xml_id(
             "stock.action_stock_inventory_adjustement_name"
         )
-        action["context"] = {"default_quant_ids": self.inventory_quant_ids.ids}
+        action["context"] = {"default_quant_ids": self.inventory_quant_ids.ids,
+                             "inventory_change_with_barcode": True}
         return action
