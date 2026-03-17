@@ -47,8 +47,8 @@ class ResPartner(models.Model):
 
     @api.depends("mass_mailing_contact_ids")
     def _compute_mass_mailing_contacts_count(self):
-        contact_data = self.env["mailing.contact"]._read_group(
-            [("partner_id", "in", self.ids)], ["partner_id"], ["partner_id"]
+        contact_data = self.env["mailing.trace"]._read_group(
+            [("partner_id", "in", self.ids)], ["partner_id"], ["partner_id:sum"]
         )
         mapped_data = {
             contact["partner_id"][0]: contact["partner_id_count"]
@@ -60,7 +60,7 @@ class ResPartner(models.Model):
     @api.depends("mass_mailing_stats_ids")
     def _compute_mass_mailing_stats_count(self):
         contact_data = self.env["mailing.trace"]._read_group(
-            [("partner_id", "in", self.ids)], ["partner_id"], ["partner_id"]
+            [("partner_id", "in", self.ids)], ["partner_id"], ["partner_id:sum"]
         )
         mapped_data = {
             contact["partner_id"][0]: contact["partner_id_count"]
