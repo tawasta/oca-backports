@@ -20,14 +20,12 @@ class MailMassMailingContactCase(base.BaseCase):
         self.check_mailing_contact_partner(contact)
 
     def test_create_mass_mailing_contact(self):
-        # title_doctor = self.env.ref("base.res_partner_title_doctor")
         country_cu = self.env.ref("base.cu")
         category_8 = self.env.ref("base.res_partner_category_8")
         category_11 = self.env.ref("base.res_partner_category_11")
         contact_vals = {
             "name": "Partner test 2",
             "email": "partner2@test.com",
-            # "title_id": title_doctor.id,
             "company_name": "TestCompany",
             "country_id": country_cu.id,
             "tag_ids": [(6, 0, (category_8 | category_11).ids)],
@@ -44,14 +42,12 @@ class MailMassMailingContactCase(base.BaseCase):
             )
 
     def test_create_mass_mailing_contact_with_subscription(self):
-        # title_doctor = self.env.ref("base.res_partner_title_doctor")
         country_cu = self.env.ref("base.cu")
         category_8 = self.env.ref("base.res_partner_category_8")
         category_11 = self.env.ref("base.res_partner_category_11")
         contact_vals = {
             "name": "Partner test 2",
             "email": "partner2@test.com",
-            # "title_id": title_doctor.id,
             "company_name": "TestCompany",
             "country_id": country_cu.id,
             "tag_ids": [(6, 0, (category_8 | category_11).ids)],
@@ -90,14 +86,12 @@ class MailMassMailingContactCase(base.BaseCase):
         contact = self.create_mailing_contact(
             {"email": "partner@test.com", "list_ids": [[6, 0, [self.mailing_list.id]]]}
         )
-        # title_doctor = self.env.ref("base.res_partner_title_doctor")
         country_cu = self.env.ref("base.cu")
         category_8 = self.env.ref("base.res_partner_category_8")
         category_11 = self.env.ref("base.res_partner_category_11")
         partner_vals = {
             "name": "Partner test 2",
             "email": "partner2@test.com",
-            # "title": title_doctor.id,
             "company_id": self.main_company.id,
             "country_id": country_cu.id,
             "category_id": [(6, 0, (category_8 | category_11).ids)],

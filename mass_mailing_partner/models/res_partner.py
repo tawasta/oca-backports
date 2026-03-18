@@ -72,8 +72,6 @@ class ResPartner(models.Model):
             mm_vals["name"] = vals["name"]
         if vals.get("email"):
             mm_vals["email"] = vals["email"]
-        if vals.get("title"):
-            mm_vals["title_id"] = vals["title"]
         if vals.get("company_id"):
             company = self.env["res.company"].browse(vals.get("company_id"))
             mm_vals["company_name"] = company.name

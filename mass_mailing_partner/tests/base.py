@@ -15,12 +15,10 @@ class BaseCase(TransactionCase):
         self.country_es = self.env.ref("base.es")
         self.category_0 = self.env.ref("base.res_partner_category_0")
         self.category_2 = self.env.ref("base.res_partner_category_2")
-        # self.title_mister = self.env.ref("base.res_partner_title_mister")
         self.partner = self.create_partner(
             {
                 "name": "Partner test",
                 "email": "partner@test.com",
-                # "title": self.title_mister.id,
                 "company_id": self.main_company.id,
                 "country_id": self.country_es.id,
                 "category_id": [(6, 0, (self.category_0 | self.category_2).ids)],

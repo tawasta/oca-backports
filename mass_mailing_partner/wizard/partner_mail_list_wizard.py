@@ -36,7 +36,6 @@ class PartnerMailListWizard(models.TransientModel):
             contact_vals = {
                 "partner_id": partner.id,
                 "list_ids": [(4, self.mail_list_id.id)],
-                # "title_id": partner.title or False,
                 "company_name": partner.company_id.name or False,
                 "country_id": partner.country_id or False,
             }
