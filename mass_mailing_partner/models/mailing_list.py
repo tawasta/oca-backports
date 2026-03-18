@@ -4,8 +4,12 @@
 # Copyright 2020 Tecnativa - Manuel Calero
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+import logging
+
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
+
+_logger = logging.getLogger(__name__)
 
 
 class MailingList(models.Model):
@@ -20,15 +24,15 @@ class MailingList(models.Model):
     def _check_contact_ids_partner_id(self):
         contact_obj = self.env["mailing.contact"]
         for mailing_list in self:
-            data = contact_obj.read_group(
+            data = contact_obj._read_group(
                 [
                     ("id", "in", mailing_list.contact_ids.ids),
                     ("partner_id", "!=", False),
                 ],
                 ["partner_id"],
-                ["partner_id"],
+                ["partner_id:count"],
             )
-            if len(list(filter(lambda r: r["partner_id_count"] > 1, data))):
+            if len(list(filter(lambda r: r[1] > 1, data))):
                 raise ValidationError(
                     self.env._("A partner cannot be multiple times in the same list")
                 )
