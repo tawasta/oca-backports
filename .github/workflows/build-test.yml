@@ -9,5 +9,5 @@ on:
 
 jobs:
   run-tests:
-    uses: tawasta/github-workflows/.github/workflows/odoo-19-build-test.yml@main
+    uses: tawasta/github-workflows/.github/workflows/odoo-19-build-test.yml@v19-tests
     secrets: inherit
