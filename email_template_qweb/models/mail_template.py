@@ -1,7 +1,7 @@
 # Copyright 2016-2024 Therp BV <http://therp.nl>
 # Copyright 2024 ForgeFlow S.L. (https://www.forgeflow.com)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-from odoo import fields, models, tools
+from odoo import fields, models
 from odoo.tools import format_datetime
 
 

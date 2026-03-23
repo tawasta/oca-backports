@@ -4,11 +4,11 @@
 {
     "name": "QWeb for email templates",
     "version": "19.0.1.0.0",
-    "author": "Therp BV, Odoo Community Association (OCA)",
+    "author": "Therp BV, Odoo Community Association (OCA), Futural",
     "license": "AGPL-3",
     "category": "Marketing",
     "summary": "Use the QWeb templating mechanism for emails",
-    "website": "https://github.com/OCA/social",
+    "website": "https://github.com/tawasta/oca-backports",
     "depends": ["mail"],
     "demo": ["demo/ir_ui_view.xml", "demo/mail_template.xml"],
     "data": ["views/mail_template.xml"],
