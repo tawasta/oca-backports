@@ -28,8 +28,14 @@
         <field name="inherit_id" ref="product.product_template_tree_view" />
         <field name="arch" type="xml">
             <field name="categ_id" position="after">
-                <field name="abc_classification_profile_id" optional="hide" />
-                <field name="abc_classification_level_id" optional="hide" />
+                <field name="abc_classification_profile_id"
+                       optional="hide"
+                       invisible="[('product_variant_count', '>', 1)]"
+                    />
+                <field name="abc_classification_level_id"
+                       optional="hide"
+                       invisible="[('product_variant_count', '>', 1)]"
+                    />
             </field>
         </field>
     </record>
@@ -39,8 +45,14 @@
         <field name="inherit_id" ref="product.product_product_tree_view" />
         <field name="arch" type="xml">
             <field name="categ_id" position="after">
-                <field name="abc_classification_profile_id" optional="hide" />
-                <field name="abc_classification_level_id" optional="hide" />
+                <field name="abc_classification_profile_id"
+                       optional="hide"
+                       invisible="[('type','!=','product')]"
+                />
+                <field name="abc_classification_level_id"
+                       optional="hide"
+                       invisible="[('type','!=','product')]"
+                />
             </field>
         </field>
     </record>

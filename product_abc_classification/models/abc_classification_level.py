@@ -10,6 +10,7 @@ class ABCClassificationProfileLevel(models.Model):
     _description = "ABC Classification Profile Level"
     _order = "sequence desc, id desc"
 
+    name = fields.Char()
     classification_type = fields.Selection(
         related="profile_id.classification_type", string="Classification Type"
     )
