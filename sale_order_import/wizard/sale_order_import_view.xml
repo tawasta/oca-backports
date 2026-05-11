@@ -9,6 +9,7 @@
         <field name="model">sale.order.import</field>
         <field name="arch" type="xml">
             <form string="Import Sale Orders">
+                <field name="state" invisible="1" />
                 <group colspan="4" name="help-import" invisible="state != 'import'">
                     <div colspan="2">
                         <p
