@@ -1,7 +1,7 @@
 # © 2016-2017 Akretion (Alexis de Lattre <alexis.delattre@akretion.com>)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, models
+from odoo import api, models, _
 
 
 class SaleOrder(models.Model):
@@ -14,7 +14,7 @@ class SaleOrder(models.Model):
         for order in self:
             # TODO: find a python method to easily display a float + currency
             # symbol (before or after) depending on lang of context and currency
-            order.display_name = order.name + self.env._(
+            order.display_name = order.name + _(
                 " Amount w/o tax: %(amount)s %(currency)s",
                 amount=order.amount_untaxed,
                 currency=order.currency_id.name,
