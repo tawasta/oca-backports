@@ -159,6 +159,11 @@ class SaleOrderImport(models.TransientModel):
             invoicing_dict = self.base_ubl.ubl_parse_customer_party(
                 invoicing_xpath[0], ns
             )
+
+        # Check if invoicing address does not contain information about the contact name
+        if not invoicing_dict.get('name', False):
+            invoicing_dict = {}
+
         note_xpath = xml_root.xpath(f"/{root_name}/cbc:Note", namespaces=ns)
         lines_xpath = xml_root.xpath(f"/{root_name}/{line_name}", namespaces=ns)
         res_lines = []
