@@ -1,1 +1,0 @@
-https://github.com/tawasta/oca-backports/archive/refs/heads/19.0.zip#subdirectory=mass_mailing_partner
