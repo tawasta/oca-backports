@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form.error.info</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='partner_details']//field[@name='partner_id']" position="after">
+                <field name="error_partner_info" invisible="not show_error_partner_info" style="color: red;" />
+            </xpath>
+
+            <xpath expr="//group[@name='partner_details']//field[@name='partner_invoice_id']" position="after">
+                <field name="error_invoicing_info" invisible="not show_error_invoicing_info" style="color: red;" />
+            </xpath>
+
+            <xpath expr="//group[@name='partner_details']//field[@name='partner_shipping_id']" position="after">
+                <field name="error_shipping_info" invisible="not show_error_shipping_info" style="color: red;" />
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']" position="before">
+                <field name="show_product_error_info" invisible="1" />
+                <field name="has_error_info" invisible="1" />
+                <field name="show_errors_are_fixed_button" invisible="1" />
+                <field name="show_error_partner_info" invisible="1" />
+                <field name="show_error_invoicing_info" invisible="1" />
+                <field name="show_error_shipping_info" invisible="1" />
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="before">
+                <field string="ERROR MESSAGE" name="product_error_info" column_invisible="not parent.show_product_error_info" decoration-danger="True" />
+            </xpath>
+
+            <xpath expr="//button[@name='action_draft']" position="after">
+                <button name="errors_are_fixed"
+                    string="Mark Errors OK"
+                    type="object"
+                    invisible="not (show_error_partner_info or show_error_invoicing_info or show_error_shipping_info or show_product_error_info or show_errors_are_fixed_button)"
+                    class="oe_highlight"/>
+                <button name="show_error_info"
+                    string="Show Error Info"
+                    type="object"
+                    invisible="not has_error_info"
+                    />
+            </xpath>
+        </field>
+    </record>
+</odoo>
