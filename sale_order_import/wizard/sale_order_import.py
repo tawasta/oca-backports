@@ -241,11 +241,57 @@ class SaleOrderImport(models.TransientModel):
     def _prepare_order(self, parsed_order, price_source):
         soo = self.env["sale.order"]
         bdio = self.env["business.document.import"]
+        partner = False
+        invoicing_partner = False
+        shipping_partner = False
         partner = bdio._match_partner(
             parsed_order["partner"],
             parsed_order["chatter_msg"],
             partner_type="customer",
+            raise_exception=False,
         )
+        error_partner = False
+        error_invoicing = False
+        error_product = False
+        error_shipping = False
+        partner_error_info = False
+        partner_shipping_error_info = False
+        partner_invoicing_error_info = False
+        product_error_info = False
+
+        if not partner:
+            error_partner = self.env['res.partner'].search([('is_error_partner', '=', True)])
+            if not error_partner:
+                error_partner = self.env['res.partner'].create({
+                    'name': 'ERROR_CUSTOMER',
+                    'is_error_partner': True,
+                })
+            partner = error_partner
+            partner_error_info = (
+                "Odoo couldn't find any {label} corresponding to the following "
+                "information extracted from the business document:\n"
+                "Name: {name} \n"
+                "VAT number: {vat} \n"
+                "Reference: {ref} \n"
+                "E-mail: {email} \n"
+                "Street: {street} \n"
+                "Zip: {zip_code} \n"
+                "Website: {website} \n"
+                "State code: {state} \n"
+                "Country code: {country} \n".format(
+                label=parsed_order["partner"].get("type_label") or "",
+                name=parsed_order["partner"].get("name") or "",
+                vat=parsed_order["partner"].get("vat") or "",
+                ref=parsed_order["partner"].get("ref") or "",
+                email=parsed_order["partner"].get("email") or "",
+                street=parsed_order["partner"].get("street") or "",
+                zip_code=parsed_order["partner"].get("zip") or "",
+                website=parsed_order["partner"].get("website") or "",
+                state=parsed_order["partner"].get("state_code") or "",
+                country=parsed_order["partner"].get("country_code") or "",
+                )
+            )
+
         currency = bdio._match_currency(
             parsed_order.get("currency"), parsed_order["chatter_msg"]
         )
@@ -261,9 +307,43 @@ class SaleOrderImport(models.TransientModel):
         so_vals["order_line"] = []
         if parsed_order.get("ship_to"):
             shipping_partner = bdio._match_shipping_partner(
-                parsed_order["ship_to"], partner, parsed_order["chatter_msg"]
+                parsed_order["ship_to"], partner, parsed_order["chatter_msg"], raise_exception=False
             )
-            so_vals["partner_shipping_id"] = shipping_partner.id
+
+        if not shipping_partner:
+            error_shipping = self.env['res.partner'].search([('is_error_delivery', '=', True)])
+            if not error_shipping:
+                error_shipping = self.env['res.partner'].create({
+                    'name': 'ERROR_SHIPPING',
+                    'is_error_delivery': True,
+                })
+            shipping_partner = error_shipping
+            partner_shipping_error_info = (
+                "Odoo couldn't find any {label} corresponding to the following "
+                "information extracted from the business document:\n"
+                "Name: {name} \n"
+                "VAT number: {vat} \n"
+                "Reference: {ref} \n"
+                "E-mail: {email} \n"
+                "Street: {street} \n"
+                "Zip: {zip_code} \n"
+                "Website: {website} \n"
+                "State code: {state} \n"
+                "Country code: {country} \n".format(
+                label=parsed_order["ship_to"].get("type_label") or "",
+                name=parsed_order["ship_to"].get("name") or "",
+                vat=parsed_order["ship_to"].get("vat") or "",
+                ref=parsed_order["ship_to"].get("ref") or "",
+                email=parsed_order["ship_to"].get("email") or "",
+                street=parsed_order["ship_to"].get("street") or "",
+                zip_code=parsed_order["partner"].get("zip") or "",
+                website=parsed_order["ship_to"].get("website") or "",
+                state=parsed_order["ship_to"].get("state_code") or "",
+                country=parsed_order["ship_to"].get("country_code") or "",
+                )
+            )
+
+        so_vals["partner_shipping_id"] = shipping_partner.id
 
         if parsed_order.get("delivery_detail"):
             so_vals.update(parsed_order.get("delivery_detail"))
@@ -272,22 +352,91 @@ class SaleOrderImport(models.TransientModel):
             invoicing_partner = bdio._match_partner(
                 parsed_order["invoice_to"], parsed_order["chatter_msg"], partner_type=""
             )
-            so_vals["partner_invoice_id"] = invoicing_partner.id
+        elif parsed_order.get("invoice_to") and not invoicing_partner:
+            error_invoicing = self.env['res.partner'].search([('is_error_invoicing', '=', True)])
+            if not error_invoicing:
+                error_invoicing = self.env['res.partner'].create({
+                    'name': 'ERROR_INVOICING',
+                    'is_error_invoicing': True,
+                })
+            invoicing_partner = error_invoicing
+            partner_invoicing_error_info = (
+                "Odoo couldn't find any {label} corresponding to the following "
+                "information extracted from the business document:\n"
+                "Name: {name} \n"
+                "VAT number: {vat} \n"
+                "Reference: {ref} \n"
+                "E-mail: {email} \n"
+                "Street: {street} \n"
+                "Zip: {zip_code} \n"
+                "Website: {website} \n"
+                "State code: {state} \n"
+                "Country code: {country} \n".format(
+                label=parsed_order["invoice_to"].get("type_label") or "",
+                name=parsed_order["invoice_to"].get("name") or "",
+                vat=parsed_order["invoice_to"].get("vat") or "",
+                ref=parsed_order["invoice_to"].get("ref") or "",
+                email=parsed_order["invoice_to"].get("email") or "",
+                street=parsed_order["invoice_to"].get("street") or "",
+                zip_code=parsed_order["invoice_to"].get("zip") or "",
+                website=parsed_order["invoice_to"].get("website") or "",
+                state=parsed_order["invoice_to"].get("state_code") or "",
+                country=parsed_order["invoice_to"].get("country_code") or "",
+                )
+            )
+        else:
+            invoicing_partner = partner
+
+        so_vals["partner_invoice_id"] = invoicing_partner and invoicing_partner.id
+
+        # Error messages of partners in case they are not found in Odoo
+        so_vals["error_partner_info"] = partner_error_info
+        so_vals["error_shipping_info"] = partner_shipping_error_info
+        so_vals["error_invoicing_info"] = partner_invoicing_error_info
+        if partner_error_info:
+            so_vals["show_error_partner_info"] = True
+        if partner_shipping_error_info:
+            so_vals["show_error_shipping_info"] = True
+        if partner_invoicing_error_info:
+            so_vals["show_error_invoicing_info"] = True
+
         if parsed_order.get("date"):
             so_vals["date_order"] = parsed_order["date"]
         error_lines = []
         for line in parsed_order["lines"]:
             try:
                 # partner=False because we don't want to use product.supplierinfo
-                product = bdio._match_product(
+                product = bdio._match_product_with_error(
                     line["product"], parsed_order["chatter_msg"], seller=False
                 )
+
+                if not product:
+                    error_product = self.env['product.product'].search([('is_error_product', '=', True)])
+                    if not error_product:
+                        error_product = self.env['product.product'].create({
+                            'name': 'ERROR_PRODUCT',
+                            'is_error_product': True,
+                        })
+                    product = error_product
+                    product_error_info = (
+                        "Odoo couldn't find any product corresponding to the "
+                        "following information extracted from the business document:\n"
+                        "Barcode: {barcode}\n"
+                        "Product code: {product_code}\n".format(
+                        barcode=line["product"].get("barcode") or "",
+                        product_code=line["product"].get("code") or "",
+                        )
+                    )
+
                 uom = bdio._match_uom(
                     line.get("uom"), parsed_order["chatter_msg"], product
                 )
                 line_vals = self._prepare_create_order_line(
                     product, uom, so_vals, line, price_source
                 )
+                if product_error_info:
+                    line_vals["product_error_info"] = product_error_info
+                    so_vals["show_product_error_info"] = True
                 so_vals["order_line"].append((0, 0, line_vals))
             except UserError as exc:
                 if not self.skip_error_lines:
@@ -388,20 +537,83 @@ class SaleOrderImport(models.TransientModel):
         self.ensure_one()
         bdio = self.env["business.document.import"]
         order_file_decoded = b64decode(self.order_file)
+        partner_shipping_error_info = False
+        partner_error_info = False
         parsed_order = self.parse_order(
             order_file_decoded, self.order_filename, self.partner_id
         )
         if not parsed_order.get("lines"):
             raise UserError(_("This order doesn't have any line !"))
         partner = bdio._match_partner(
-            parsed_order["partner"], [], partner_type="customer"
+            parsed_order["partner"], [], partner_type="customer", raise_exception=False
         )
+
+        if not partner:
+            error_partner = self.env['res.partner'].search([('is_error_partner', '=', True)])
+            if not error_partner:
+                error_partner = self.env['res.partner'].create({
+                    'name': 'ERROR_CUSTOMER',
+                    'is_error_partner': True,
+                })
+            partner = error_partner
+            partner_error_info = (
+                "Odoo couldn't find any {label} corresponding to the following "
+                "information extracted from the business document:\n"
+                "Name: {name} \n"
+                "VAT number: {vat} \n"
+                "Reference: {ref} \n"
+                "E-mail: {email} \n"
+                "Website: {website} \n"
+                "State code: {state} \n"
+                "Country code: {country} \n".format(
+                label=parsed_order["partner"].get("type_label") or "",
+                name=parsed_order["partner"].get("name") or "",
+                vat=parsed_order["partner"].get("vat") or "",
+                ref=parsed_order["partner"].get("ref") or "",
+                email=parsed_order["partner"].get("email") or "",
+                website=parsed_order["partner"].get("website") or "",
+                state=parsed_order["partner"].get("state_code") or "",
+                country=parsed_order["partner"].get("country_code") or "",
+                )
+            )
+
         commercial_partner = partner.commercial_partner_id
         partner_shipping_id = False
         if parsed_order.get("ship_to"):
             partner_shipping_id = bdio._match_shipping_partner(
-                parsed_order["ship_to"], partner, []
-            ).id
+                parsed_order["ship_to"], partner, [], raise_exception=False
+            )
+            partner_shipping_id = partner_shipping_id and partner_shipping_id.id
+
+        if not partner_shipping_id:
+            error_shipping = self.env['res.partner'].search([('is_error_delivery', '=', True)])
+            if not error_shipping:
+                error_shipping = self.env['res.partner'].create({
+                    'name': 'ERROR_SHIPPING',
+                    'is_error_delivery': True,
+                })
+            partner_shipping_id = error_shipping
+            partner_shipping_error_info = (
+                "Odoo couldn't find any {label} corresponding to the following "
+                "information extracted from the business document:\n"
+                "Name: {name} \n"
+                "VAT number: {vat} \n"
+                "Reference: {ref} \n"
+                "E-mail: {email} \n"
+                "Website: {website} \n"
+                "State code: {state} \n"
+                "Country code: {country} \n".format(
+                label=parsed_order["ship_to"].get("type_label") or "",
+                name=parsed_order["ship_to"].get("name") or "",
+                vat=parsed_order["ship_to"].get("vat") or "",
+                ref=parsed_order["ship_to"].get("ref") or "",
+                email=parsed_order["ship_to"].get("email") or "",
+                website=parsed_order["ship_to"].get("website") or "",
+                state=parsed_order["ship_to"].get("state_code") or "",
+                country=parsed_order["ship_to"].get("country_code") or "",
+                )
+            )
+
         existing_quotations = self.env["sale.order"].search(
             self._search_existing_order_domain(
                 parsed_order, commercial_partner, [("state", "in", ("draft", "sent"))]

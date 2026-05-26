@@ -3,7 +3,7 @@
 
 {
     "name": "Sale Order Import",
-    "version": "17.0.1.0.1",
+    "version": "17.0.1.1.1",
     "category": "Sales Management",
     "license": "AGPL-3",
     "summary": "Import RFQ or sale orders from files",
@@ -22,6 +22,7 @@
     ],
     "data": [
         "security/ir.model.access.csv",
+        "views/sale_order.xml",
         "wizard/sale_order_import_view.xml",
         "templates/error_lines_chatter_msg.xml",
     ],
