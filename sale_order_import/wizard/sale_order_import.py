@@ -244,12 +244,21 @@ class SaleOrderImport(models.TransientModel):
         partner = False
         invoicing_partner = False
         shipping_partner = False
-        partner = bdio._match_partner(
-            parsed_order["partner"],
-            parsed_order["chatter_msg"],
-            partner_type="customer",
-            raise_exception=False,
+
+        default_ubl_partner = self.env["res.partner"].search(
+            [("default_ubl_import_partner", "=", True)], limit=1
         )
+
+        if default_ubl_partner:
+            partner = default_ubl_partner
+        else:
+            partner = bdio._match_partner(
+                parsed_order["partner"],
+                parsed_order["chatter_msg"],
+                partner_type="customer",
+                raise_exception=False,
+            )
+
         error_partner = False
         error_invoicing = False
         error_product = False
@@ -310,38 +319,58 @@ class SaleOrderImport(models.TransientModel):
                 parsed_order["ship_to"], partner, parsed_order["chatter_msg"], raise_exception=False
             )
 
-        if not shipping_partner:
-            error_shipping = self.env['res.partner'].search([('is_error_delivery', '=', True)])
-            if not error_shipping:
-                error_shipping = self.env['res.partner'].create({
-                    'name': 'ERROR_SHIPPING',
-                    'is_error_delivery': True,
-                })
-            shipping_partner = error_shipping
-            partner_shipping_error_info = (
-                "Odoo couldn't find any {label} corresponding to the following "
-                "information extracted from the business document:\n"
-                "Name: {name} \n"
-                "VAT number: {vat} \n"
-                "Reference: {ref} \n"
-                "E-mail: {email} \n"
-                "Street: {street} \n"
-                "Zip: {zip_code} \n"
-                "Website: {website} \n"
-                "State code: {state} \n"
-                "Country code: {country} \n".format(
-                label=parsed_order["ship_to"].get("type_label") or "",
-                name=parsed_order["ship_to"].get("name") or "",
-                vat=parsed_order["ship_to"].get("vat") or "",
-                ref=parsed_order["ship_to"].get("ref") or "",
-                email=parsed_order["ship_to"].get("email") or "",
-                street=parsed_order["ship_to"].get("street") or "",
-                zip_code=parsed_order["partner"].get("zip") or "",
-                website=parsed_order["ship_to"].get("website") or "",
-                state=parsed_order["ship_to"].get("state_code") or "",
-                country=parsed_order["ship_to"].get("country_code") or "",
-                )
-            )
+        parsed_shipping_partner = parsed_order.get("ship_to")
+
+        if not shipping_partner and parsed_shipping_partner:
+            country_code = parsed_shipping_partner.get('country_code', False)
+            country_id = country_code and self.env['res.country'].search([("code", "=", country_code)]) or False
+            if country_id:
+                parsed_shipping_partner["country_id"] = country_id.id
+            parsed_shipping_partner.pop('country_code', None)
+
+            is_contact = parsed_shipping_partner.get('contact', False)
+            if is_contact:
+                parsed_shipping_partner["is_company"] = False
+            else:
+                parsed_shipping_partner["is_company"] = True
+            parsed_shipping_partner.pop('contact', None)
+            parsed_shipping_partner.pop('id_number', None)
+            parsed_shipping_partner.pop('state_code', None)
+            parsed_shipping_partner.pop('street_number', None)
+
+            shipping_partner = self.env['res.partner'].create(parsed_shipping_partner)
+            #shipping_partner = self.env['res.partner'].create(parsed_order["ship_to"])
+            #error_shipping = self.env['res.partner'].search([('is_error_delivery', '=', True)])
+            #if not error_shipping:
+            #    error_shipping = self.env['res.partner'].create({
+            #        'name': 'ERROR_SHIPPING',
+            #        'is_error_delivery': True,
+            #    })
+            #shipping_partner = error_shipping
+            #partner_shipping_error_info = (
+            #    "Odoo couldn't find any {label} corresponding to the following "
+            #    "information extracted from the business document:\n"
+            #    "Name: {name} \n"
+            #    "VAT number: {vat} \n"
+            #    "Reference: {ref} \n"
+            #    "E-mail: {email} \n"
+            #    "Street: {street} \n"
+            #    "Zip: {zip_code} \n"
+            #    "Website: {website} \n"
+            #    "State code: {state} \n"
+            #    "Country code: {country} \n".format(
+            #    label=parsed_order["ship_to"].get("type_label") or "",
+            #    name=parsed_order["ship_to"].get("name") or "",
+            #    vat=parsed_order["ship_to"].get("vat") or "",
+            #    ref=parsed_order["ship_to"].get("ref") or "",
+            #    email=parsed_order["ship_to"].get("email") or "",
+            #    street=parsed_order["ship_to"].get("street") or "",
+            #    zip_code=parsed_order["partner"].get("zip") or "",
+            #    website=parsed_order["ship_to"].get("website") or "",
+            #    state=parsed_order["ship_to"].get("state_code") or "",
+            #    country=parsed_order["ship_to"].get("country_code") or "",
+            #    )
+            #)
 
         so_vals["partner_shipping_id"] = shipping_partner.id
 

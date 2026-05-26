@@ -39,9 +39,15 @@ class SaleOrder(models.Model):
         self.show_errors_are_fixed_button = False
 
     def show_error_info(self):
-        self.show_error_partner_info = True
-        self.show_error_invoicing_info = True
-        self.show_error_shipping_info = True
-        self.show_product_error_info = True
+        self.show_error_partner_info = self.error_partner_info and True or False
+        self.show_error_invoicing_info = self.error_invoicing_info and True or False
+        self.show_error_shipping_info = self.error_shipping_info and True or False
+
+        has_error_product = False
+        for line in self.order_line:
+            if line.product_id and line.product_id.is_error_product:
+                has_error_product = True
+        self.show_product_error_info = has_error_product
+
         self.has_error_info = False
         self.show_errors_are_fixed_button = True
