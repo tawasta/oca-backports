@@ -336,6 +336,7 @@ class SaleOrderImport(models.TransientModel):
             parsed_shipping_partner.pop('contact', None)
             parsed_shipping_partner.pop('id_number', None)
             parsed_shipping_partner.pop('state_code', None)
+            parsed_shipping_partner.pop('street_number', None)
 
             shipping_partner = self.env['res.partner'].create(parsed_shipping_partner)
             #shipping_partner = self.env['res.partner'].create(parsed_order["ship_to"])
