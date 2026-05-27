@@ -3,7 +3,7 @@
 
 {
     "name": "Sale Order Import",
-    "version": "17.0.1.1.3",
+    "version": "17.0.1.1.4",
     "category": "Sales Management",
     "license": "AGPL-3",
     "summary": "Import RFQ or sale orders from files",
@@ -19,6 +19,7 @@
         # TODO: this dependency should be removed
         # and support for PDF import should be moved to a glue module
         "pdf_xml_attachment",
+        "sale_order_customer_marking",
     ],
     "data": [
         "security/ir.model.access.csv",
