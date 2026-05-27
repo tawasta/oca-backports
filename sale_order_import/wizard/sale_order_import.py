@@ -429,6 +429,12 @@ class SaleOrderImport(models.TransientModel):
         if partner_invoicing_error_info:
             so_vals["show_error_invoicing_info"] = True
 
+        ir_config_model = self.env["ir.config_parameter"]
+        if not ir_config_model.sudo().get_param(
+            "sale_order_import_skip_customer_marking"
+        ):
+            so_vals["customer_marking"] = shipping_partner.name
+
         if parsed_order.get("date"):
             so_vals["date_order"] = parsed_order["date"]
         error_lines = []
