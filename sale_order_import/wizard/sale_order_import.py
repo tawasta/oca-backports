@@ -7,6 +7,7 @@
 import logging
 import mimetypes
 from base64 import b64decode, b64encode
+import os
 
 from lxml import etree
 
@@ -567,6 +568,45 @@ class SaleOrderImport(models.TransientModel):
                 parsed_order["company"], parsed_order["chatter_msg"]
             )
         return parsed_order
+
+    def cron_import_order_from_file(self):
+        #self.ensure_one()
+        bdio = self.env["business.document.import"]
+
+        ubl_file_path = (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_param("order_import_ubl.path")
+        )
+
+        if not ubl_file_path:
+            logger.info("No directory given for UBL import")
+            return
+
+        if not os.path.exists(ubl_file_path):
+            logger.info("Invalid directory given for UBL import")
+            return
+
+        import_records = self.env["sale.order.import"]
+
+        for file_to_scan in os.scandir(ubl_file_path):
+            if file_to_scan.is_file():
+                with open(file_to_scan.path, "rb") as file_to_read:
+                    read_file = file_to_read.read()
+#                    import_records += self.env["sale.order.import"].create({
+                    import_record = self.env["sale.order.import"].create({
+                        "order_filename": file_to_scan.name,
+                        "import_type": "xml",
+                        "doc_type": "order",
+                        "price_source": "order",
+                        "confirm_order": False,
+                        "state": "import",
+                        "order_file": read_file,
+                    })
+                    print("Trying to import\n:", read_file)
+                    print("Import record", import_record)
+                    import_record.import_order_button()
+        return
 
     def import_order_button(self):
         self.ensure_one()
