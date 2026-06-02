@@ -8,6 +8,7 @@ import logging
 import mimetypes
 from base64 import b64decode, b64encode
 import os
+import shutil
 
 from lxml import etree
 
@@ -570,13 +571,18 @@ class SaleOrderImport(models.TransientModel):
         return parsed_order
 
     def cron_import_order_from_file(self):
-        #self.ensure_one()
         bdio = self.env["business.document.import"]
 
         ubl_file_path = (
             self.env["ir.config_parameter"]
             .sudo()
             .get_param("order_import_ubl.path")
+        )
+
+        ubl_file_path_dest = (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_param("order_import_ubl_destination.path")
         )
 
         if not ubl_file_path:
@@ -593,7 +599,7 @@ class SaleOrderImport(models.TransientModel):
             if file_to_scan.is_file():
                 with open(file_to_scan.path, "rb") as file_to_read:
                     read_file = file_to_read.read()
-#                    import_records += self.env["sale.order.import"].create({
+                    read_file = b64encode(read_file)
                     import_record = self.env["sale.order.import"].create({
                         "order_filename": file_to_scan.name,
                         "import_type": "xml",
@@ -603,9 +609,14 @@ class SaleOrderImport(models.TransientModel):
                         "state": "import",
                         "order_file": read_file,
                     })
-                    print("Trying to import\n:", read_file)
-                    print("Import record", import_record)
+
+                    import_record.order_file_change()
                     import_record.import_order_button()
+                    if ubl_file_path and ubl_file_path_dest:
+                        shutil.move(
+                            "{}{}".format(ubl_file_path, file_to_scan.name),
+                            "{}{}".format(ubl_file_path_dest, file_to_scan.name),
+                        )
         return
 
     def import_order_button(self):
