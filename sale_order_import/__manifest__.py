@@ -22,6 +22,7 @@
         "sale_order_customer_marking",
     ],
     "data": [
+        "data/ir_cron.xml",
         "security/ir.model.access.csv",
         "views/res_partner.xml",
         "views/sale_order.xml",

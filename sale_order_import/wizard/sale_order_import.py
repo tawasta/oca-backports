@@ -7,6 +7,8 @@
 import logging
 import mimetypes
 from base64 import b64decode, b64encode
+import os
+import shutil
 
 from lxml import etree
 
@@ -567,6 +569,55 @@ class SaleOrderImport(models.TransientModel):
                 parsed_order["company"], parsed_order["chatter_msg"]
             )
         return parsed_order
+
+    def cron_import_order_from_file(self):
+        bdio = self.env["business.document.import"]
+
+        ubl_file_path = (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_param("order_import_ubl.path")
+        )
+
+        ubl_file_path_dest = (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_param("order_import_ubl_destination.path")
+        )
+
+        if not ubl_file_path:
+            logger.info("No directory given for UBL import")
+            return
+
+        if not os.path.exists(ubl_file_path):
+            logger.info("Invalid directory given for UBL import")
+            return
+
+        import_records = self.env["sale.order.import"]
+
+        for file_to_scan in os.scandir(ubl_file_path):
+            if file_to_scan.is_file():
+                with open(file_to_scan.path, "rb") as file_to_read:
+                    read_file = file_to_read.read()
+                    read_file = b64encode(read_file)
+                    import_record = self.env["sale.order.import"].create({
+                        "order_filename": file_to_scan.name,
+                        "import_type": "xml",
+                        "doc_type": "order",
+                        "price_source": "order",
+                        "confirm_order": False,
+                        "state": "import",
+                        "order_file": read_file,
+                    })
+
+                    import_record.order_file_change()
+                    import_record.import_order_button()
+                    if ubl_file_path and ubl_file_path_dest:
+                        shutil.move(
+                            "{}{}".format(ubl_file_path, file_to_scan.name),
+                            "{}{}".format(ubl_file_path_dest, file_to_scan.name),
+                        )
+        return
 
     def import_order_button(self):
         self.ensure_one()
