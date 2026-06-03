@@ -1,0 +1,170 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_status
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0-20260528\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-03 06:36+0000\n"
+"PO-Revision-Date: 2026-06-03 09:39+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: project_status
+#: model:project.status,description:project_status.project_status_in_progress
+msgid ""
+"\n"
+"            Project is currently initiated and being worked.\n"
+"        "
+msgstr ""
+"\n"
+"            Hanke on käynnistynyt ja sitä työstetään parhaillaan.\n"
+"        "
+
+#. module: project_status
+#: model:project.status,description:project_status.project_status_pending
+msgid ""
+"\n"
+"            Project is new and being built. Has not been started yet.\n"
+"        "
+msgstr ""
+"\n"
+"            Hanke on uusi ja rakenteilla. Sitä ei ole vielä käynnistetty.\n"
+"        "
+
+#. module: project_status
+#: model_terms:ir.ui.view,arch_db:project_status.project_view_kanban
+msgid "<span class=\"o_label\">(</span>"
+msgstr "<span class=\"o_label\">(</span>"
+
+#. module: project_status
+#: model_terms:ir.ui.view,arch_db:project_status.project_view_kanban
+msgid "<span class=\"o_label\">)</span>"
+msgstr "<span class=\"o_label\">)</span>"
+
+#. module: project_status
+#: model_terms:ir.ui.view,arch_db:project_status.view_project_project_filter
+msgid "Closed"
+msgstr "Suljettu"
+
+#. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_status__company_id
+msgid "Company"
+msgstr "Yritys"
+
+#. module: project_status
+#: model:project.status,name:project_status.project_status_complete
+msgid "Complete"
+msgstr "Valmis"
+
+#. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_status__create_uid
+msgid "Created by"
+msgstr "Luonut"
+
+#. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_status__create_date
+msgid "Created on"
+msgstr "Luotu"
+
+#. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_status__description
+msgid "Description"
+msgstr "Kuvaus"
+
+#. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_status.field_project_status__display_name
+msgid "Display Name"
+msgstr "Näyttönimi"
+
+#. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_status__fold
+msgid "Folded"
+msgstr "Taitettu"
+
+#. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_project__id
+#: model:ir.model.fields,field_description:project_status.field_project_status__id
+msgid "ID"
+msgstr "Tunnus"
+
+#. module: project_status
+#: model:project.status,name:project_status.project_status_in_progress
+msgid "In Progress"
+msgstr "Käynnissä"
+
+#. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_status__is_closed
+msgid "Is Closed Status"
+msgstr "Tila on suljettu"
+
+#. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_status__write_uid
+msgid "Last Updated by"
+msgstr "Viimeksi päivittänyt"
+
+#. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_status__write_date
+msgid "Last Updated on"
+msgstr "Päivitetty viimeksi"
+
+#. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_status__name
+msgid "Name"
+msgstr "Nimi"
+
+#. module: project_status
+#: model_terms:ir.ui.view,arch_db:project_status.view_project_project_filter
+msgid "Not Closed"
+msgstr "Ei suljettu"
+
+#. module: project_status
+#: model:project.status,name:project_status.project_status_pending
+msgid "Pending"
+msgstr "Käsiteltävänä"
+
+#. module: project_status
+#: model:ir.model,name:project_status.model_project_project
+msgid "Project"
+msgstr "Projekti"
+
+#. module: project_status
+#: model:ir.model,name:project_status.model_project_status
+#: model:ir.model.fields,field_description:project_status.field_project_project__project_status
+msgid "Project Status"
+msgstr "Projektin tilanne"
+
+#. module: project_status
+#: model:ir.actions.act_window,name:project_status.project_status_action
+#: model:ir.ui.menu,name:project_status.project_status_menu
+msgid "Project Statuses"
+msgstr "Projektien tilat"
+
+#. module: project_status
+#: model:project.status,description:project_status.project_status_complete
+msgid "Project has been completed."
+msgstr "Projekti on saatu päätökseen."
+
+#. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_status__status_sequence
+msgid "Sequence"
+msgstr "Järjestys"
+
+#. module: project_status
+#: model:ir.model.fields,help:project_status.field_project_status__is_closed
+msgid "Specify if this is a closing status."
+msgstr "Ilmoita, onko kyseessä sulkeva tila."
+
+#. module: project_status
+#: model_terms:ir.ui.view,arch_db:project_status.project_project_view_form_simplified
+#: model_terms:ir.ui.view,arch_db:project_status.view_project_project_filter
+msgid "Status"
+msgstr "Tila"
