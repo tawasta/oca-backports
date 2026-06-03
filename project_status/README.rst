@@ -55,6 +55,7 @@ Authors
 -------
 
 * Patrick Wilson
+* Futural
 
 Contributors
 ------------

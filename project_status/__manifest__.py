@@ -2,7 +2,7 @@
     "name": "Project Status",
     "summary": """
         Project Status""",
-    "author": "Patrick Wilson, Odoo Community Association (OCA)",
+    "author": "Patrick Wilson, Odoo Community Association (OCA), Futural",
     "website": "https://github.com/tawasta/oca-backports",
     "category": "Project Management",
     "version": "19.0.1.0.0",

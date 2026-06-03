@@ -6,7 +6,7 @@ class Project(models.Model):
 
     @api.model
     def _read_group_status_ids(self, states, domain):
-        return states.search([])
+        return states.search([], limit=500)
 
     project_status = fields.Many2one(
         comodel_name="project.status",
