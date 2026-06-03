@@ -317,7 +317,7 @@ class TestProjectTimesheetTimeControl(TestProjectTimesheetTimeControlBase):
         )
         result = self.env["account.analytic.line"].search(
             [
-                ("date_time_end", ">=", "2023-01-10 9:00:00"),
+                ("date_time_end", ">=", "2023-01-10 09:00:00"),
                 ("date_time_end", "<=", "2023-01-10 11:00:00"),
             ]
         )

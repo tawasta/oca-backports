@@ -3,6 +3,7 @@
 # Copyright 2016-2018 Tecnativa - Pedro M. Baeza
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
+import logging
 from datetime import datetime
 
 from dateutil.relativedelta import relativedelta
@@ -10,6 +11,8 @@ from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools.sql import SQL
+
+_logger = logging.getLogger(__name__)
 
 
 class AccountAnalyticLine(models.Model):
@@ -182,6 +185,12 @@ class AccountAnalyticLine(models.Model):
     def _search_date_time_end(self, operator, value):
         # reference value is 1 day == 8 hours
         hour_uom = self.env.ref("uom.product_uom_hour")
+        _logger.error("HERE: ")
+        _logger.error(value)
+        if isinstance(value, str):
+            time = (datetime.strptime(value, "%Y-%m-%d %H:%M:%S"),)
+        else:
+            time = value
         return [
             (
                 "date_time",
@@ -191,7 +200,7 @@ class AccountAnalyticLine(models.Model):
                     "(select 1 / factor * %(day_factor)s "
                     "from uom_uom where id = account_analytic_line.product_uom_id) * "
                     "interval '1 hour'",
-                    start_time=datetime.strptime(value, "%Y-%m-%d %H:%M:%S"),
+                    start_time=time,
                     day_factor=hour_uom.factor,
                 ),
             )
