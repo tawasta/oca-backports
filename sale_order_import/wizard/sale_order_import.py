@@ -313,7 +313,11 @@ class SaleOrderImport(models.TransientModel):
             "client_order_ref": parsed_order.get("order_ref"),
         }
         self._validate_currency(partner, currency)
-        self._validate_existing_orders(partner, parsed_order)
+
+        validated = self._validate_existing_orders(partner, parsed_order)
+        if validated == "abort":
+            return False
+
         so_vals = soo.play_onchanges(so_vals, ["partner_id"])
         so_vals["order_line"] = []
         if parsed_order.get("ship_to"):
@@ -513,23 +517,27 @@ class SaleOrderImport(models.TransientModel):
             ),
             limit=1,
         )
-        if existing_orders:
-            raise UserError(
-                _(
+        if existing_orders and self._context.get("ubl_import_done", False):
+            msg = (_(
                     "An order of customer '%(partner)s' with reference '%(ref)s' "
                     "already exists: %(name)s (state: %(state)s)",
                     partner=partner.display_name,
                     ref=parsed_order["order_ref"],
                     name=existing_orders[0].name,
                     state=existing_orders[0].state,
-                )
-            )
+                ))
+            logger.info(msg)
+            return "abort"
+        if existing_orders:
+            raise UserError(msg)
 
     @api.model
     def create_order(self, parsed_order, price_source, order_filename=None):
         soo = self.env["sale.order"].with_context(mail_create_nosubscribe=True)
         bdio = self.env["business.document.import"]
         so_vals = self._prepare_order(parsed_order, price_source)
+        if not so_vals:
+            return False
         order = soo.create(so_vals)
         bdio.post_create_or_update(parsed_order, order, doc_filename=order_filename)
         logger.info("Sale Order ID %d created", order.id)
@@ -610,13 +618,13 @@ class SaleOrderImport(models.TransientModel):
                         "order_file": read_file,
                     })
 
+                    import_record._context["ubl_import_done"] = True
+                    import_record._context["file_to_scan_name"] = file_to_scan.name
+                    import_record._context["ubl_file_path"] = ubl_file_path
+                    import_record._context["ubl_file_path_dest"] = ubl_file_path_dest
+
                     import_record.order_file_change()
                     import_record.import_order_button()
-                    if ubl_file_path and ubl_file_path_dest:
-                        shutil.move(
-                            "{}{}".format(ubl_file_path, file_to_scan.name),
-                            "{}{}".format(ubl_file_path_dest, file_to_scan.name),
-                        )
         return
 
     def import_order_button(self):
@@ -736,6 +744,22 @@ class SaleOrderImport(models.TransientModel):
     def create_order_return_action(self, parsed_order, order_filename):
         self.ensure_one()
         order = self.create_order(parsed_order, self.price_source, order_filename)
+        if not order:
+            return False
+        ctx = self._context
+        if ctx.get("ubl_import_done", False):
+            order.ubl_import_done = True
+        file_to_scan_name, ubl_file_path, ubl_file_path_dest = (
+            ctx.get("file_to_scan_name", False),
+            ctx.get("ubl_file_path", False),
+            ctx.get("ubl_file_path_dest", False)
+        )
+        if file_to_scan_name and ubl_file_path and ubl_file_path_dest:
+            shutil.move(
+                "{}{}".format(ubl_file_path, file_to_scan_name),
+                "{}{}".format(ubl_file_path_dest, file_to_scan_name),
+            )
+
         self._post_error_lines_message(parsed_order, order)
         order.message_post(
             body=_("Created automatically via file import (%s).")
