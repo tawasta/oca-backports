@@ -7,15 +7,16 @@ from odoo import api, fields, models, _
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    has_error_info = fields.Boolean()
-    show_errors_are_fixed_button = fields.Boolean()
-    error_partner_info = fields.Text()
-    error_invoicing_info = fields.Text()
-    error_shipping_info = fields.Text()
-    show_error_partner_info = fields.Boolean()
-    show_error_invoicing_info = fields.Boolean()
-    show_error_shipping_info = fields.Boolean()
-    show_product_error_info = fields.Boolean()
+    ubl_import_done = fields.Boolean(default=False, copy=False)
+    has_error_info = fields.Boolean(copy=False)
+    show_errors_are_fixed_button = fields.Boolean(copy=False)
+    error_partner_info = fields.Text(copy=False)
+    error_invoicing_info = fields.Text(copy=False)
+    error_shipping_info = fields.Text(copy=False)
+    show_error_partner_info = fields.Boolean(copy=False)
+    show_error_invoicing_info = fields.Boolean(copy=False)
+    show_error_shipping_info = fields.Boolean(copy=False)
+    show_product_error_info = fields.Boolean(copy=False)
 
     @api.depends_context("sale_order_show_amount")
     def _compute_display_name(self):
