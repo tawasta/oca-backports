@@ -517,7 +517,8 @@ class SaleOrderImport(models.TransientModel):
             ),
             limit=1,
         )
-        if existing_orders and self._context.get("ubl_import_done", False):
+
+        if existing_orders:
             msg = (_(
                     "An order of customer '%(partner)s' with reference '%(ref)s' "
                     "already exists: %(name)s (state: %(state)s)",
@@ -526,10 +527,11 @@ class SaleOrderImport(models.TransientModel):
                     name=existing_orders[0].name,
                     state=existing_orders[0].state,
                 ))
-            logger.info(msg)
-            return "abort"
-        if existing_orders:
-            raise UserError(msg)
+            if self._context.get("ubl_import_done", False):
+                logger.info(msg)
+                return "abort"
+            else:
+                raise UserError(msg)
 
     @api.model
     def create_order(self, parsed_order, price_source, order_filename=None):
