@@ -20,6 +20,7 @@
         # and support for PDF import should be moved to a glue module
         "pdf_xml_attachment",
         "sale_order_customer_marking",
+        "sale_order_line_reference",
     ],
     "data": [
         "data/ir_cron.xml",
