@@ -748,6 +748,7 @@ class SaleOrderImport(models.TransientModel):
         order = self.create_order(parsed_order, self.price_source, order_filename)
         if not order:
             return False
+        order.action_update_prices()
         ctx = self._context
         if ctx.get("ubl_import_done", False):
             order.ubl_import_done = True
