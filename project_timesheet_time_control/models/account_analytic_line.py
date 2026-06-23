@@ -185,8 +185,6 @@ class AccountAnalyticLine(models.Model):
     def _search_date_time_end(self, operator, value):
         # reference value is 1 day == 8 hours
         hour_uom = self.env.ref("uom.product_uom_hour")
-        _logger.error("HERE: ")
-        _logger.error(value)
         if isinstance(value, str):
             time = (datetime.strptime(value, "%Y-%m-%d %H:%M:%S"),)
         else:
