@@ -5,6 +5,8 @@ import logging
 import re
 
 from odoo import _, api, fields, models
+from odoo import Command
+
 
 _logger = logging.getLogger(__name__)
 
@@ -897,6 +899,9 @@ class WizStockBarcodesRead(models.AbstractModel):
             self.process_barcode_package_id()
 
     def action_confirm(self):
+        if self.env.context.get("force_create_picking", False):
+            self._force_create_picking()   
+
         if not self.check_option_required():
             self.play_sounds(False)
             return False
@@ -941,6 +946,45 @@ class WizStockBarcodesRead(models.AbstractModel):
                     {"count": self.count_inventory_quants},
                 )
         return res
+
+    def _force_create_picking(self):
+        picking_type = self.env["stock.picking.type"].search([("code", "=", self.picking_type_code)], limit=1)
+
+        picking_values = {
+            "picking_type_id": picking_type.id,
+            "location_id": self.location_id.id,
+            "location_dest_id": self.location_dest_id.id,
+        }
+        picking_id = self.env["stock.picking"].create(picking_values)
+
+        move_values = {
+            "name": "Consume " + self.product_id.display_name,
+            "picking_id": picking_id.id,
+            "product_id": self.product_id.id,
+            "product_uom_qty": self.product_qty,
+            "product_uom": self.product_uom_id.id,
+            "location_id": self.location_id.id,
+            "location_dest_id": self.location_dest_id.id,
+            "state": "draft",
+            "move_line_ids": [
+                Command.create(
+                    {
+                        "product_id": self.product_id.id,
+                        "location_id": self.location_id.id,
+                        "location_dest_id": self.location_dest_id.id,
+                        "company_id": self.env.company.id,
+                        "quantity": self.product_qty,
+                        "qty_picked": self.product_qty,
+                        "quantity_product_uom": self.product_uom_id.id,
+                        "lot_id": self.lot_id.id,
+                    }
+                )
+            ],
+        }
+        self.env["stock.move"].create(move_values)
+        picking_id.action_assign()
+        self.picking_id = picking_id
+        self._set_candidate_pickings(picking_id)
 
     def action_add_scan_manual(self):
         self.manual_entry = True
