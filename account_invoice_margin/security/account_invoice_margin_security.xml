@@ -9,7 +9,7 @@
 
   <record id="group_account_invoice_margin_security" model="res.groups">
     <field name="name">Show Invoice Margin</field>
-    <field name="category_id" ref="privilege_account_invoice_margin_security" />
+    <field name="privilege_id" ref="privilege_account_invoice_margin_security" />
     <field name="user_ids" eval="[(4, ref('base.user_admin'))]" />
   </record>
 </odoo>
