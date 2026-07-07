@@ -1,0 +1,512 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* purchase_container
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0-20260630\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-07 10:45+0000\n"
+"PO-Revision-Date: 2026-07-07 10:45+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_container
+#: model_terms:ir.ui.view,arch_db:purchase_container.container_type_view_form
+msgid "40HC"
+msgstr "40HC"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__date_ata
+msgid "ATA Date"
+msgstr "ATA-päivämäärä"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__date_atd
+msgid "ATD Date"
+msgstr "ATD-päivämäärä"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__message_needaction
+msgid "Action Needed"
+msgstr "Toimenpidettä vaaditaan"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__activity_ids
+msgid "Activities"
+msgstr "Toimenpiteet"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Toimenpiteen poikkeuskorostus"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__activity_state
+msgid "Activity State"
+msgstr "Toimenpiteen tila"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Toimenpiteen tyyppikuvake"
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__date_ata
+msgid "Actual Time Of Arrival"
+msgstr "Todellinen saapumisaika"
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__date_atd
+msgid "Actual Time Of Departure"
+msgstr "Todellinen lähtöaika"
+
+#. module: purchase_container
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_form
+msgid "Arrival"
+msgstr "Saapuminen"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__arrival_location_id
+msgid "Arrival Location"
+msgstr "Saapumispaikka"
+
+#. module: purchase_container
+#: model:ir.model.fields.selection,name:purchase_container.selection__purchase_container__state__arrived
+msgid "Arrived"
+msgstr "Saapunut"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__message_attachment_count
+msgid "Attachment Count"
+msgstr "Liitteiden määrä"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__bill_of_lading_ref
+msgid "Bill Of Lading No."
+msgstr "Lastauskirjan numero"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__weight
+msgid "Bruto Weight"
+msgstr "Bruttopaino"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_stock_picking__container_id
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_form
+msgid "Container"
+msgstr "Kontti"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__code
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_form
+msgid "Container Reference"
+msgstr "Konttiviite"
+
+#. module: purchase_container
+#: model:ir.actions.act_window,name:purchase_container.container_type_action
+#: model:ir.ui.menu,name:purchase_container.menu_container_type
+msgid "Container Types"
+msgstr "Konttityypit"
+
+#. module: purchase_container
+#: model:ir.actions.act_window,name:purchase_container.purchase_container_action
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_order__container_ids
+#: model:ir.ui.menu,name:purchase_container.menu_procurement_management_container
+msgid "Containers"
+msgstr "Kontit"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__cost
+msgid "Cost"
+msgstr "Kustannus"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__cost_currency_id
+msgid "Cost Currency"
+msgstr "Kustannusvaluutta"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_container_type__create_uid
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__create_uid
+msgid "Created by"
+msgstr "Luonut"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_container_type__create_date
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__create_date
+msgid "Created on"
+msgstr "Luotu"
+
+#. module: purchase_container
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_form
+msgid "Departure"
+msgstr "Lähtö"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__departure_location_id
+msgid "Departure Location"
+msgstr "Lähtöpaikka"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_container_type__description
+msgid "Description"
+msgstr "Kuvaus"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_container_type__display_name
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__display_name
+msgid "Display Name"
+msgstr "Näyttönimi"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__displayed_incoterm_id
+msgid "Displayed Incoterm"
+msgstr "Näytettävä Incoterm"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__date_eta
+msgid "ETA Date"
+msgstr "ETA-päivämäärä"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__date_etd
+msgid "ETD Date"
+msgstr "ETD-päivämäärä"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__date_ett
+msgid "ETT Date"
+msgstr "ETT-päivämäärä"
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__date_eta
+msgid "Estimated Time Of Arrival"
+msgstr "Arvioitu saapumisaika"
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__date_etd
+msgid "Estimated Time Of Departure"
+msgstr "Arvioitu lähtöaika"
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__date_ett
+msgid "Estimated Time Of Travel"
+msgstr "Arvioitu matka-aika"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__message_follower_ids
+msgid "Followers"
+msgstr "Seuraajat"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seuraajat (kumppanit)"
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Font Awesome -kuvake, esim. fa-tasks"
+
+#. module: purchase_container
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_search
+msgid "Group By"
+msgstr "Ryhmittele"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__has_message
+msgid "Has Message"
+msgstr "Sisältää viestin"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_container_type__id
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__id
+msgid "ID"
+msgstr "ID"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__activity_exception_icon
+msgid "Icon"
+msgstr "Kuvake"
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Kuvake, joka ilmaisee poikkeavan toimenpiteen."
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Jos valittu, uudet viestit vaativat huomiota."
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__message_has_error
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Jos valittu, joillakin viesteillä on toimitusvirhe."
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__incoterm_id
+msgid "Incoterm"
+msgstr "Incoterm"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__message_is_follower
+msgid "Is Follower"
+msgstr "On seuraaja"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__is_locked
+msgid "Is Locked"
+msgstr "Lukittu"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_container_type__write_uid
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__write_uid
+msgid "Last Updated by"
+msgstr "Viimeksi päivittänyt"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_container_type__write_date
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__write_date
+msgid "Last Updated on"
+msgstr "Viimeksi päivitetty"
+
+#. module: purchase_container
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_form
+msgid "Lock"
+msgstr "Lukitse"
+
+#. module: purchase_container
+#: model:ir.model.fields.selection,name:purchase_container.selection__purchase_container__state__locked
+msgid "Locked"
+msgstr "Lukittu"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__manual_incoterm_id
+msgid "Manual Incoterm"
+msgstr "Manuaalinen Incoterm"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__message_has_error
+msgid "Message Delivery error"
+msgstr "Viestin toimitusvirhe"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__message_ids
+msgid "Messages"
+msgstr "Viestit"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Oman toimenpiteen määräaika"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_container_type__name
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__name
+msgid "Name"
+msgstr "Nimi"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Seuraavan toimenpiteen määräaika"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__activity_summary
+msgid "Next Activity Summary"
+msgstr "Seuraavan toimenpiteen yhteenveto"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__activity_type_id
+msgid "Next Activity Type"
+msgstr "Seuraavan toimenpiteen tyyppi"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Toimenpiteiden määrä"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__message_has_error_counter
+msgid "Number of errors"
+msgstr "Virheiden määrä"
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Toimenpidettä vaativien viestien määrä"
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Toimitusvirheellisten viestien määrä"
+
+#. module: purchase_container
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_order_view_form_container
+msgid "Open"
+msgstr "Avaa"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__package_qty
+msgid "Package Qty"
+msgstr "Pakettimäärä"
+
+#. module: purchase_container
+#: model:ir.model,name:purchase_container.model_purchase_order
+msgid "Purchase Order"
+msgstr "Ostotilaus"
+
+#. module: purchase_container
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_form
+msgid "Purchase Orders"
+msgstr "Ostotilaukset"
+
+#. module: purchase_container
+#: model:ir.model,name:purchase_container.model_purchase_container
+msgid "Purchase order related container"
+msgstr "Ostotilaukseen liittyvä kontti"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__purchase_order_count
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_form
+msgid "Purchases"
+msgstr "Ostot"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__purchase_order_rfq_count
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_form
+msgid "RFQ"
+msgstr "Tarjouspyyntö"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__picking_count
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_form
+msgid "Receipts"
+msgstr "Saapumiset"
+
+#. module: purchase_container
+#: model:ir.actions.server,name:purchase_container.ir_cron_recompute_purchase_container_state_ir_actions_server
+msgid "Recompute purchase container state"
+msgstr "Laske uudelleen ostokontin tila"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__picking_ids
+msgid "Related Pickings"
+msgstr "Liittyvät keräilyt"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__purchase_order_ids
+msgid "Related Purchases"
+msgstr "Liittyvät ostot"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__activity_user_id
+msgid "Responsible User"
+msgstr "Vastuullinen käyttäjä"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "SMS-toimitusvirhe"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__shipping_agent_id
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_search
+msgid "Shipping Agent"
+msgstr "Varustamo"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__state
+msgid "State"
+msgstr "Tila"
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Tila toimenpiteiden perusteella\n"
+"Myöhässä: Eräpäivä on jo mennyt\n"
+"Tänään: Toimenpiteen päivämäärä on tänään\n"
+"Suunniteltu: Tulevat toimenpiteet."
+
+#. module: purchase_container
+#: model:ir.model,name:purchase_container.model_stock_picking
+msgid "Transfer"
+msgstr "Siirto"
+
+#. module: purchase_container
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_form
+msgid "Transfers"
+msgstr "Siirrot"
+
+#. module: purchase_container
+#: model:ir.model.fields.selection,name:purchase_container.selection__purchase_container__state__transit
+msgid "Transit"
+msgstr "Matkalla"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__type_id
+msgid "Type"
+msgstr "Tyyppi"
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Tietueen poikkeavan toimenpiteen tyyppi."
+
+#. module: purchase_container
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_form
+msgid "Unlock"
+msgstr "Poista lukitus"
+
+#. module: purchase_container
+#: model:ir.model,name:purchase_container.model_container_type
+msgid "Usual containers"
+msgstr "Tavalliset kontit"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__volume
+#: model_terms:ir.ui.view,arch_db:purchase_container.purchase_container_view_form
+msgid "Volume"
+msgstr "Tilavuus"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__volume_uom_id
+msgid "Volume Units of Measure"
+msgstr "Tilavuusyksikkö"
+
+#. module: purchase_container
+#: model:ir.model.fields.selection,name:purchase_container.selection__purchase_container__state__waiting
+msgid "Waiting"
+msgstr "Odottaa"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__website_message_ids
+msgid "Website Messages"
+msgstr "Verkkosivun viestit"
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__website_message_ids
+msgid "Website communication history"
+msgstr "Verkkosivun viestintähistoria"
+
+#. module: purchase_container
+#: model:ir.model.fields,help:purchase_container.field_purchase_container__weight_uom_id
+msgid "Weight Unit of Measure"
+msgstr "Painoyksikkö"
+
+#. module: purchase_container
+#: model:ir.model.fields,field_description:purchase_container.field_purchase_container__weight_uom_id
+msgid "Weight Units of Measure"
+msgstr "Painoyksiköt"
