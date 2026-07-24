@@ -1,0 +1,908 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_vlm_mgmt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-07-22 05:56\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: stock_vlm_mgmt
+#. odoo-python
+#: code:addons/stock_vlm_mgmt/models/stock_location.py:0
+#: code:addons/stock_vlm_mgmt/models/stock_location_vlm_tray.py:0
+#, python-format
+msgid "%(user)s has requested a release of the trays from Odoo"
+msgstr "%(user)s on pyytänyt lokeroiden vapautusta Odoo:sta"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_action_form_view
+msgid ""
+"&amp;nbsp;\n"
+"                        <i class=\"fa fa-info-circle\"/>&amp;nbsp;"
+msgstr ""
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_action_form_view
+msgid "<i class=\"fa fa-exclamation-triangle\"/>&amp;nbsp;"
+msgstr ""
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_action_form_view
+msgid "<i class=\"fa fa-info-circle\"/>&amp;nbsp;Splitted from&amp;nbsp;"
+msgstr ""
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.svm_operation_picking_form_view
+msgid ""
+"<i class=\"fa fa-rocket\"/>&amp;nbsp;\n"
+"                    Pending VLM tasks. Proceed to complete them.&amp;nbsp;"
+msgstr ""
+
+#. module: stock_vlm_mgmt
+#: model:ir.model,name:stock_vlm_mgmt.model_stock_vlm_task_action
+msgid "Actions to perform on vlm task exceptions"
+msgstr "Toimenpiteet VLM-tehtävien poikkeustilanteisiin"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__active
+msgid "Active"
+msgstr "Aktiivinen"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.actions.act_window,help:stock_vlm_mgmt.action_stock_location_tray_type
+msgid "Add a Location Tray Type"
+msgstr "Lisää sijainnin lokero-tyyppi"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,help:stock_vlm_mgmt.field_stock_location__vlm_address
+msgid ""
+"An VLM normally will be behind some propietary proxy that handles several "
+"VLMs at once, so we need to set which one corresponds to this location"
+msgstr ""
+"VLM on yleensä jonkin omistusohjatun välityspalvelimen takana, joka käsittelee useita VLM:iä kerralla, joten meidän on asetettava, mikä niistä vastaa tätä sijaintia"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_location_tray_type_form
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_location_tray_type_search
+msgid "Archived"
+msgstr "Arkistoitu"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_location_vlm_tray_tree
+msgid "Call"
+msgstr "Kutsu"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_location_vlm_tray_form
+msgid "Call tray"
+msgstr "Kutsu lokero"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__code
+msgid "Code"
+msgstr "Koodi"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__cols
+msgid "Cols"
+msgstr "Sarakkeet"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_vlm_task_form
+msgid "Command"
+msgstr "Komento"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_quant_vlm_form
+msgid "Content"
+msgstr "Sisältö"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_vlm_task__task_type__count
+msgid "Count"
+msgstr "Laskenta"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray__create_uid
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__create_uid
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__create_uid
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__create_uid
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__create_uid
+msgid "Created by"
+msgstr "Luonut"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray__create_date
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__create_date
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__create_date
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__create_date
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__create_date
+msgid "Created on"
+msgstr "Luotu"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.actions.act_window,help:stock_vlm_mgmt.action_stock_location_tray_type
+msgid ""
+"Define the number of rows and cols on a tray,\n"
+"                depending of the boxes size."
+msgstr ""
+"Määritä lokeroon rivien ja sarakkeiden määrä laatikoiden koon mukaan."
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__depth
+msgid "Depth"
+msgstr "Syvyys"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__depth_per_cell
+msgid "Depth Per Cell"
+msgstr "Syvyys per solu"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,help:stock_vlm_mgmt.field_stock_location_vlm_tray_type__depth
+msgid "Depth of the tray in mm"
+msgstr "Lokeron syvyys mm"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_quant_inventory_tree
+msgid "Details"
+msgstr "Tiedot"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray__display_name
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__display_name
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__display_name
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__display_name
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__display_name
+msgid "Display Name"
+msgstr "Näyttönimi"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_vlm_task_tree
+msgid "Do tasks"
+msgstr "Suorita tehtävät"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_vlm_task__state__done
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_vlm_task_action__state__done
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_vlm_task_form
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_vlm_task_tree
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_action_form_view
+msgid "Done"
+msgstr "Valmis"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_search_view
+msgid "Done tasks"
+msgstr "Valmiit tehtävät"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_vlm_task_action__state__edit
+msgid "Edit"
+msgstr "Muokkaa"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_location__vlm_removal_strategy__fifo
+msgid "FIFO"
+msgstr "FIFO"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_vlm_task__task_type__get
+msgid "Get"
+msgstr "Hae"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_picking__has_pending_vlm_tasks
+msgid "Has Pending Vlm Tasks"
+msgstr "On odottavia VLM-tehtäviä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_move_line__has_vlm_operation
+msgid "Has Vlm Operation"
+msgstr "On VLM-operaatio"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_picking__has_vlm_operations
+msgid "Has Vlm Operations"
+msgstr "On VLM-operaatioita"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_picking__has_vlm_pending_operations
+msgid "Has Vlm Pending Operations"
+msgstr "On odottavia VLM-operaatioita"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__height
+msgid "Height"
+msgstr "Korkeus"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,help:stock_vlm_mgmt.field_stock_location_vlm_tray_type__height
+msgid "Height of the tray in mm"
+msgstr "Lokeron korkeus mm"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray__id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__id
+msgid "ID"
+msgstr "ID"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__image_512
+msgid "Image 512"
+msgstr "Kuva 512"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model,name:stock_vlm_mgmt.model_stock_location_vlm_tray
+msgid "Individual trays in a Vertical Lift Module"
+msgstr "Yksittäiset lokerot pystysuorassa hyllystössä (VLM)"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model,name:stock_vlm_mgmt.model_stock_location
+msgid "Inventory Locations"
+msgstr "Varastosijainnit"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray__is_full
+msgid "Is Full"
+msgstr "On täynnä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location__is_vlm
+msgid "Is Vlm"
+msgstr "On VLM"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_location__vlm_removal_strategy__lifo
+msgid "LIFO"
+msgstr "LIFO"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray____last_update
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type____last_update
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm____last_update
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task____last_update
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action____last_update
+msgid "Last Modified on"
+msgstr "Viimeksi muokattu"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray__write_uid
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__write_uid
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__write_uid
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__write_uid
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__write_uid
+msgid "Last Updated by"
+msgstr "Viimeksi päivittänyt"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray__write_date
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__write_date
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__write_date
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__write_date
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__write_date
+msgid "Last Updated on"
+msgstr "Viimeksi päivitetty"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_location_tray_type_form
+msgid "Layout"
+msgstr "Asettelu"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_location__vlm_removal_strategy__optimal
+msgid "Less carrier movements"
+msgstr "Vähemmän nostimen liikkeitä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray__location_id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__location_id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__location_id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__location_id
+msgid "Location"
+msgstr "Paikka"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_location_tray_type_search
+msgid "Location Tray Type"
+msgstr "Paikan lokero-tyyppi"
+
+#. module: stock_vlm_mgmt
+#: model:ir.actions.act_window,name:stock_vlm_mgmt.action_stock_location_tray_type
+#: model:ir.ui.menu,name:stock_vlm_mgmt.menu_stock_location_tray_type
+msgid "Location Tray Types"
+msgstr "Paikan lokero-tyypit"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_action_form_view
+msgid "Manual set"
+msgstr "Manuaalinen asetus"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__move_line_ids
+msgid "Move Line"
+msgstr "Siirtorivi"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray__name
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__name
+msgid "Name"
+msgstr "Nimi"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__next_vlm_task_id
+msgid "Next Vlm Task"
+msgstr "Seuraava VLM-tehtävä"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_action_form_view
+msgid "Next 🡺"
+msgstr "Seuraava 🡺"
+
+#. module: stock_vlm_mgmt
+#. odoo-python
+#: code:addons/stock_vlm_mgmt/models/stock_location.py:0
+#, python-format
+msgid "No implemented request connector for this vendor!"
+msgstr "Tälle toimittajalle ei ole toteutettu yhteysliitintä!"
+
+#. module: stock_vlm_mgmt
+#. odoo-python
+#: code:addons/stock_vlm_mgmt/wizards/stock_vlm_task_action.py:0
+#, python-format
+msgid ""
+"No quantity was processed. Do you want to put the goods in another position?"
+" (you can also skip the task)"
+msgstr ""
+"Määrää ei käsitelty. Haluatko sijoittaa tavarat toiseen paikkaan? (voit myös ohittaa tehtävän)"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_vlm_task_form
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_vlm_task_tree
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_search_view
+msgid "Operation"
+msgstr "Operaatio"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_vlm_task__state__pending
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_vlm_task_action__state__pending
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_vlm_task_form
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_vlm_task_tree
+msgid "Pending"
+msgstr "Odottaa"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_search_view
+msgid "Pending tasks"
+msgstr "Odottavat tehtävät"
+
+#. module: stock_vlm_mgmt
+#: model:ir.actions.server,name:stock_vlm_mgmt.vlm_operation_bulk_task_action
+msgid "Perform VLM Tasks"
+msgstr "Suorita VLM-tehtävät"
+
+#. module: stock_vlm_mgmt
+#. odoo-javascript
+#: code:addons/stock_vlm_mgmt/static/src/js/vlm_request_button/vlm_request_views.xml:0
+#: code:addons/stock_vlm_mgmt/static/src/js/vlm_request_button/vlm_request_views.xml:0
+#, python-format
+msgid "Perform tasks"
+msgstr "Suorita tehtävät"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__pos_x
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__pos_x
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__pos_x
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_vlm_tray_cell_position_mixin__pos_x
+msgid "Pos X"
+msgstr "Pos X"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__pos_y
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__pos_y
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__pos_y
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_vlm_tray_cell_position_mixin__pos_y
+msgid "Pos Y"
+msgstr "Pos Y"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__previous_vlm_task_id
+msgid "Previous Vlm Task"
+msgstr "Edellinen VLM-tehtävä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__product_id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__product_id
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_quant_search_view
+msgid "Product"
+msgstr "Tuote"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model,name:stock_vlm_mgmt.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Tuotteen siirrot (varastosiirtorivi)"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_vlm_task__task_type__put
+msgid "Put"
+msgstr "Aseta"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__quant_id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__quant_id
+msgid "Quant"
+msgstr "Määrä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__quantity
+msgid "Quantity"
+msgstr "Määrä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__quantity_done
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__quantity_done
+msgid "Quantity Done"
+msgstr "Tehty määrä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__quantity_pending
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__quantity_pending
+msgid "Quantity Pending"
+msgstr "Odottava määrä"
+
+#. module: stock_vlm_mgmt
+#. odoo-python
+#: code:addons/stock_vlm_mgmt/wizards/stock_vlm_task_action.py:0
+#, python-format
+msgid ""
+"Quantity mismatch! The quantity reported by the VLM is greater than original"
+" demand!. Please check it. If it's ok, you can fix it now and save the task "
+"manually."
+msgstr ""
+"Määrä ei täsmää! VLM:n ilmoittama määrä on suurempi kuin alkuperäinen tarve!. Tarkista se. Jos se on ok, voit korjata sen nyt ja tallentaa tehtävän manuaalisesti."
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,help:stock_vlm_mgmt.field_stock_move_line__vlm_pending_quantity
+msgid "Quantity pending on VLM Operations"
+msgstr "VLM-operaatioissa odottava määrä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model,name:stock_vlm_mgmt.model_stock_quant
+msgid "Quants"
+msgstr "Määrät"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__reference
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_quant_vlm_form
+msgid "Reference"
+msgstr "Viite"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_location_form
+msgid "Release trays"
+msgstr "Vapauta lokerot"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__rows
+msgid "Rows"
+msgstr "Rivit"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__vlm_task_id
+msgid "Selected task"
+msgstr "Valittu tehtävä"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_vlm_task_form
+msgid "Send task to the VLM"
+msgstr "Lähetä tehtävä VLM:lle"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_location_tray_type_form
+msgid "Sizes"
+msgstr "Koot"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_action_form_view
+msgid "Skip"
+msgstr "Ohita"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__skipped
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_vlm_task_action__state__skipped
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_action_form_view
+msgid "Skipped"
+msgstr "Ohitettu"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__splitted_vlm_task_id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__splitted_vlm_task_id
+msgid "Splitted Vlm Task"
+msgstr "Jaettu VLM-tehtävä"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_action_form_view
+msgid "Start task"
+msgstr "Aloita tehtävä"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.svm_operation_picking_form_view
+msgid "Start tasks"
+msgstr "Aloita tehtävät"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__state
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__state
+msgid "State"
+msgstr "Tila"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__task_type
+msgid "Task Type"
+msgstr "Tehtävän tyyppi"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_location__vlm_vendor__test
+msgid "Test"
+msgstr "Testi"
+
+#. module: stock_vlm_mgmt
+#. odoo-python
+#: code:addons/stock_vlm_mgmt/models/stock_location.py:0
+#, python-format
+msgid ""
+"The command response has been lost for unknown reasons. Did you perform the "
+"operation on the VLM? Make sure there aren't unconsistencies with the "
+"recorded data"
+msgstr ""
+"Komennon vastaus on kadonnut tuntemattomista syistä. Suorititko operaation VLM:ssä? Varmista, että tallennetuissa tiedoissa ei ole epäjohdonmukaisuuksia"
+
+#. module: stock_vlm_mgmt
+#. odoo-python
+#: code:addons/stock_vlm_mgmt/models/stock_location.py:0
+#, python-format
+msgid "The connection was refused by the VLM and couldn't be stablished."
+msgstr "Yhteys hylättiin VLM:ssä eikä sitä voitu muodostaa."
+
+#. module: stock_vlm_mgmt
+#. odoo-python
+#: code:addons/stock_vlm_mgmt/wizards/stock_vlm_task_action.py:0
+#, python-format
+msgid "The quantity reported is greater than the one set in the task!"
+msgstr "Ilmoitettu määrä on suurempi kuin tehtävässä asetettu!"
+
+#. module: stock_vlm_mgmt
+#. odoo-python
+#: code:addons/stock_vlm_mgmt/models/stock_location.py:0
+#, python-format
+msgid "The task couldn't be performed due to a timeout in the request"
+msgstr "Tehtävää ei voitu suorittaa pyynnön aikakatkaisun vuoksi"
+
+#. module: stock_vlm_mgmt
+#. odoo-python
+#: code:addons/stock_vlm_mgmt/models/stock_location.py:0
+#, python-format
+msgid ""
+"The task couldn't be performed. Try again or check  the vertical lift module"
+" for hardware issues"
+msgstr ""
+"Tehtävää ei voitu suorittaa. Yritä uudelleen tai tarkista pystysuora hyllystö laitteisto-ongelmien varalta"
+
+#. module: stock_vlm_mgmt
+#. odoo-python
+#: code:addons/stock_vlm_mgmt/models/stock_location.py:0
+#, python-format
+msgid "The task was cancelled by the VLM"
+msgstr "VLM peruutti tehtävän"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model,name:stock_vlm_mgmt.model_stock_picking
+msgid "Transfer"
+msgstr "Siirto"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__tray_id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__tray_id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__tray_id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_vlm_tray_cell_position_mixin__tray_id
+msgid "Tray"
+msgstr "Lokero"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_location_tray_type_form
+msgid "Tray Configuration"
+msgstr "Lokeron määritys"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray__tray_matrix
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__tray_matrix
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__tray_matrix
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__tray_matrix
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__tray_matrix
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_vlm_tray_cell_position_mixin__tray_matrix
+msgid "Tray Matrix"
+msgstr "Lokero matriisi"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray__tray_type_id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant_vlm__tray_type_id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__tray_type_id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__tray_type_id
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_vlm_tray_cell_position_mixin__tray_type_id
+msgid "Tray Type"
+msgstr "Lokero-tyyppi"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_location_vlm_tray_form
+msgid "Tray contents"
+msgstr "Lokeron sisältö"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_location_vlm_tray_tree
+msgid "Tray inventory"
+msgstr "Lokeron inventaario"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_location_vlm_tray_form
+msgid "Tray layout"
+msgstr "Lokeroasettelu"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model,name:stock_vlm_mgmt.model_vlm_tray_cell_position_mixin
+msgid "Tray position helpers"
+msgstr "Lokero sijaintiapu"
+
+#. module: stock_vlm_mgmt
+#. odoo-javascript
+#: code:addons/stock_vlm_mgmt/static/src/js/location_tray_matrix/stock_location_tray.esm.js:0
+#, python-format
+msgid "Tray storage layout"
+msgstr "Lokero varastoasettelu"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_location_form
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_quant_search_view
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_search_view
+msgid "Trays"
+msgstr "Lokerot"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_quant_search_view
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_search_view
+msgid "VLM"
+msgstr "VLM"
+
+#. module: stock_vlm_mgmt
+#: model:ir.actions.act_window,name:stock_vlm_mgmt.action_vlm_task_action
+msgid "VLM Operation Action"
+msgstr "VLM-operaation toiminto"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_action_form_view
+msgid "VLM Operation action needed"
+msgstr "VLM-operaation toimintoa tarvitaan"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_location_form
+msgid "VLM Structure"
+msgstr "VLM-rakenne"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.svm_operation_picking_form_view
+msgid "VLM Tasks"
+msgstr "VLM-tehtävät"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_location_tray_type_form
+msgid "VLM Tray Type"
+msgstr "VLM-lokero-tyyppi"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model,name:stock_vlm_mgmt.model_stock_location_vlm_tray_type
+msgid "VLM Tray configuration"
+msgstr "VLM-lokero määritys"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_location_form
+msgid "VLM backend configuration"
+msgstr ""
+
+#. module: stock_vlm_mgmt
+#: model:ir.ui.menu,name:stock_vlm_mgmt.menu_vlm_config
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_location_search
+msgid "Vertical Lift Module"
+msgstr "Pystynostovarasto (VLM)"
+
+#. module: stock_vlm_mgmt
+#: model:ir.actions.act_window,name:stock_vlm_mgmt.location_quant_form_action
+#: model:ir.actions.act_window,name:stock_vlm_mgmt.location_quant_vlm_action
+#: model:ir.ui.menu,name:stock_vlm_mgmt.menu_vlm_quant
+msgid "Vertical Lift Module Quants"
+msgstr "Pystynostovarasto määrät"
+
+#. module: stock_vlm_mgmt
+#: model:ir.actions.act_window,name:stock_vlm_mgmt.vlm_task_action
+#: model:ir.ui.menu,name:stock_vlm_mgmt.vlm_task_menu
+msgid "Vertical Lift Module Tasks"
+msgstr "Pystynostovarasto tehtävät"
+
+#. module: stock_vlm_mgmt
+#: model:ir.actions.act_window,name:stock_vlm_mgmt.location_vlm_tray_action
+#: model:ir.ui.menu,name:stock_vlm_mgmt.menu_vlm_config_trays
+msgid "Vertical Lift Module Trays"
+msgstr "Pystynostovarasto lokerot"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_location_search
+msgid "Vertical Lift Module locations"
+msgstr "Pystynostovarasto sijainnit"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model,name:stock_vlm_mgmt.model_stock_quant_vlm
+msgid "Vertical Lift Module structure inside the quant"
+msgstr "Pystynostovaraston rakenne määrän sisällä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model,name:stock_vlm_mgmt.model_stock_vlm_task
+msgid "Vertical Lift Module task"
+msgstr "Pystynostovaraston tehtävä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.actions.act_window,name:stock_vlm_mgmt.vlm_location_action
+#: model:ir.ui.menu,name:stock_vlm_mgmt.vlm_locations_menu
+msgid "Vertical Lift Modules"
+msgstr "Pystynostovarastot"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_quant_tree
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_quant_tree_editable
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_quant_tree_inventory_editable
+msgid "View in VLM"
+msgstr "Näytä VLM:ssä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location__vlm_address
+msgid "Vlm Address"
+msgstr "VLM-osoite"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location__vlm_hostname
+msgid "Vlm Hostname"
+msgstr "VLM-isäntänimi"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_picking__vlm_move_line_ids
+msgid "Vlm Move Line"
+msgstr "VLM-siirtorivi"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location__vlm_password
+msgid "Vlm Password"
+msgstr "VLM-salasana"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_picking__vlm_pending_move_line_ids
+msgid "Vlm Pending Move Line"
+msgstr "VLM-odottava siirtorivi"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_move_line__vlm_pending_quantity
+msgid "Vlm Pending Quantity"
+msgstr "VLM-odottava määrä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location__vlm_port
+msgid "Vlm Port"
+msgstr "VLM-portti"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_quant__vlm_quant_ids
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task__vlm_quant_id
+msgid "Vlm Quant"
+msgstr "VLM-määrä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location__vlm_removal_strategy
+msgid "Vlm Removal Strategy"
+msgstr "VLM-poistostrategia"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location__vlm_sequence_id
+msgid "Vlm Sequence"
+msgstr "VLM-sekvenssi"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_picking__vlm_task_ids
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__vlm_task_ids
+msgid "Vlm Task"
+msgstr "VLM-tehtävä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__vlm_tasks_partial
+msgid "Vlm Tasks Partial"
+msgstr "VLM-tehtävät osittain"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__vlm_tasks_progress
+msgid "Vlm Tasks Progress"
+msgstr "VLM-tehtävien edistyminen"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__vlm_tasks_total
+msgid "Vlm Tasks Total"
+msgstr "VLM-tehtävät yhteensä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location__vlm_tray_ids
+msgid "Vlm Tray"
+msgstr "VLM-lokero"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location__vlm_user
+msgid "Vlm User"
+msgstr "VLM-käyttäjä"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location__vlm_vendor
+msgid "Vlm Vendor"
+msgstr "VLM-toimittaja"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_vlm_task__state__waiting
+#: model:ir.model.fields.selection,name:stock_vlm_mgmt.selection__stock_vlm_task_action__state__waiting
+msgid "Waiting"
+msgstr "Odottaa"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_vlm_task_action__warning
+msgid "Warning"
+msgstr "Varoitus"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__width
+msgid "Width"
+msgstr "Leveys"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,field_description:stock_vlm_mgmt.field_stock_location_vlm_tray_type__width_per_cell
+msgid "Width Per Cell"
+msgstr "Leveys per solu"
+
+#. module: stock_vlm_mgmt
+#: model:ir.model.fields,help:stock_vlm_mgmt.field_stock_location_vlm_tray_type__width
+msgid "Width of the tray in mm"
+msgstr "Lokeron leveys mm"
+
+#. module: stock_vlm_mgmt
+#. odoo-python
+#: code:addons/stock_vlm_mgmt/models/stock_quant.py:0
+#, python-format
+msgid "You can't change the product"
+msgstr "Et voi vaihtaa tuotetta"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_location_tray_type_form
+msgid "mm /"
+msgstr "mm /"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.view_stock_location_tray_type_form
+msgid "mm per cell"
+msgstr "mm per solu"
+
+#. module: stock_vlm_mgmt
+#: model_terms:ir.ui.view,arch_db:stock_vlm_mgmt.vlm_task_action_form_view
+msgid "🡸 Previous"
+msgstr "🡸 Edellinen"
