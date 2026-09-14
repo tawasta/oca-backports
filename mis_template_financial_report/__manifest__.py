@@ -5,8 +5,8 @@
     "name": "Profit & Loss / Balance sheet MIS templates",
     "version": "19.0.1.0.0",
     "license": "AGPL-3",
-    "author": "Hunki Enterprises BV,Odoo Community Association (OCA)",
-    "website": "https://github.com/OCA/account-financial-reporting",
+    "author": "Hunki Enterprises BV,Odoo Community Association (OCA), Futural",
+    "website": "https://github.com/tawasta/oca-backports",
     "category": "Localization",
     "depends": ["mis_builder"],
     "data": [
