@@ -2,7 +2,6 @@
 # Copyright 2024 ForgeFlow S.L. (https://www.forgeflow.com)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo import fields, models
-from odoo.tools import format_datetime
 
 
 class MailTemplate(models.Model):
@@ -17,27 +16,41 @@ class MailTemplate(models.Model):
     body_view_id = fields.Many2one("ir.ui.view", domain=[("type", "=", "qweb")])
     body_view_arch = fields.Text(related="body_view_id.arch")
 
-    def _generate_template(self, res_ids, render_fields, find_or_create_partners=False):
-        render_results = super()._generate_template(
-            res_ids, render_fields, find_or_create_partners=find_or_create_partners
+    def _render_template(
+        self,
+        template_src,
+        model,
+        res_ids,
+        engine="inline_template",
+        add_context=None,
+        options=None,
+    ):
+        """Render the view of the template instead of its body.
+
+        Only ``body_html`` is rendered with the ``qweb`` engine on a template, so
+        that is the one swapped for the ``qweb_view`` engine of core. Core then
+        takes care of the language of the template, of the evaluation context and
+        of the post processing of the result (absolute links), like for a body.
+        """
+        if (
+            engine == "qweb"
+            and len(self) == 1
+            and self.body_type == "qweb_view"
+            and self.body_view_id
+        ):
+            return super()._render_template(
+                self.body_view_id,
+                model,
+                res_ids,
+                engine="qweb_view",
+                add_context={**(add_context or {}), "email_template": self},
+                options=options,
+            )
+        return super()._render_template(
+            template_src,
+            model,
+            res_ids,
+            engine=engine,
+            add_context=add_context,
+            options=options,
         )
-
-        if self.body_type == "qweb_view":
-            if "body_html" in render_fields:
-                IrQweb = self.env["ir.qweb"]
-                for res_id in res_ids:
-                    record = self.env[self.model].browse(res_id)
-                    custom_context = {
-                        "object": record,
-                        "email_template": self,
-                        "format_datetime": lambda dt,
-                        tz=False,
-                        dt_format=False,
-                        lang_code=False: format_datetime(
-                            self.env, dt, tz, dt_format, lang_code
-                        ),
-                    }
-                    body_html = IrQweb._render(self.body_view_id.id, custom_context)
-                    render_results[res_id]["body_html"] = body_html
-
-        return render_results
