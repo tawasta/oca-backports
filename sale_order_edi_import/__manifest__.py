@@ -1,0 +1,34 @@
+# © 2016-2017 Akretion (Alexis de Lattre <alexis.delattre@akretion.com>)
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
+{
+    "name": "Sale Order EDI Import",
+    "version": "19.0.1.0.0",
+    "category": "Sales Management",
+    "license": "AGPL-3",
+    "summary": "Import RFQ or sale orders from files",
+    "author": "Akretion, Camptocamp, Odoo Community Association (OCA)",
+    "website": "https://github.com/tawasta/oca-backports",
+    "depends": [
+        # OCA/sale-workflow
+        "sale_commercial_partner",
+        # OCA/edi
+        "base_business_document_import",
+        # OCA/server-tools
+        "onchange_helper",
+        # TODO: this dependency should be removed
+        # and support for PDF import should be moved to a glue module
+        "pdf_xml_attachment",
+        "sale_order_customer_marking",
+        "sale_order_line_reference",
+    ],
+    "data": [
+        "data/ir_cron.xml",
+        "security/ir.model.access.csv",
+        "views/res_partner.xml",
+        "views/sale_order.xml",
+        "wizard/sale_order_import_view.xml",
+        "templates/error_lines_chatter_msg.xml",
+    ],
+    "installable": True,
+}
