@@ -752,7 +752,7 @@ class SaleOrderImport(models.TransientModel):
                 }
             )
             action = self.env["ir.actions.act_window"]._for_xml_id(
-                "sale_order_import.sale_order_import_action"
+                "sale_order_edi_import.sale_order_import_action"
             )
             action["res_id"] = self.id
             return action
@@ -837,7 +837,7 @@ class SaleOrderImport(models.TransientModel):
             {
                 "product_id": product.id,
                 "product_uom_qty": import_line["qty"],
-                "product_uom": uom.id,
+                "product_uom_id": uom.id,
                 "company_id": company_id,
             }
         )
@@ -903,7 +903,7 @@ class SaleOrderImport(models.TransientModel):
                     "product": oline.product_id or False,
                     "name": oline.name,
                     "qty": oline.product_uom_qty,
-                    "uom": oline.product_uom,
+                    "uom": oline.product_uom_id,
                     "line": oline,
                     "price_unit": price_unit,
                 }
@@ -927,13 +927,13 @@ class SaleOrderImport(models.TransientModel):
                         product=oline.product_id.display_name,
                         qty0=cdict["qty"][0],
                         qty1=cdict["qty"][1],
-                        uom=oline.product_uom.name,
+                        uom=oline.product_uom_id.name,
                     )
                 )
                 write_vals["product_uom_qty"] = cdict["qty"][1]
                 if price_source != "order":
                     new_price_unit = order.pricelist_id.with_context(
-                        date=order.date_order, uom=oline.product_uom.id
+                        date=order.date_order, uom=oline.product_uom_id.id
                     )._price_get(
                         oline.product_id,
                         write_vals["product_uom_qty"],
@@ -958,7 +958,7 @@ class SaleOrderImport(models.TransientModel):
                 oline.write(write_vals)
         if compare_res["to_remove"]:
             to_remove_label = [
-                f"{line.product_uom_qty} {line.product_uom.name} "
+                f"{line.product_uom_qty} {line.product_uom_id.name} "
                 f"x {line.product_id.name}"
                 for line in compare_res["to_remove"]
             ]
@@ -979,7 +979,7 @@ class SaleOrderImport(models.TransientModel):
                 line_vals["order_id"] = order.id
                 new_line = solo.create(line_vals)
                 to_create_label.append(
-                    f"{new_line.product_uom_qty} {new_line.product_uom.name} "
+                    f"{new_line.product_uom_qty} {new_line.product_uom_id.name} "
                     f"x {new_line.name}"
                 )
             chatter.append(
