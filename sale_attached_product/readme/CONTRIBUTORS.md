@@ -1,0 +1,4 @@
+- [Tecnativa](https://www.tecnativa.com):
+  - David Vidal
+- [Futural Oy](https://futural.fi):
+  - Timo Talvitie \<<timo.talvitie@futural.fi>\>
