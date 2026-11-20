@@ -3,7 +3,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "QWeb for email templates",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "author": "Therp BV, Odoo Community Association (OCA), Futural",
     "license": "AGPL-3",
     "category": "Marketing",

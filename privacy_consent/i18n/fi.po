@@ -1,0 +1,660 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* privacy_consent
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: privacy_consent
+#: model:mail.template,body_html:privacy_consent.template_consent
+msgid ""
+"<div style=\"background:#F3F5F6;color:#515166;padding:25px 0px;font-family:Arial,Helvetica,sans-serif;font-size:14px;\">\n"
+"                <table style=\"width:600px;margin:5px auto;\">\n"
+"                    <tbody>\n"
+"                        <tr>\n"
+"                            <td>\n"
+"                                <a href=\"/\">\n"
+"                                    <img src=\"/logo\" t-att-alt=\"object.activity_id.controller_id.display_name\" style=\"vertical-align:baseline;max-width:100px;\">\n"
+"                                </a>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"                <table style=\"width:600px;margin:0px auto;background:white;border:1px solid #e1e1e1;\">\n"
+"                    <tbody>\n"
+"                        <tr>\n"
+"                            <td colspan=\"2\" style=\"padding:15px 20px 0px 20px; font-size:16px;\">\n"
+"                                <p>\n"
+"                                    Hello, <t t-out=\"object.partner_id.name\"></t>\n"
+"                                </p>\n"
+"                                <p>\n"
+"                                    We contacted you to ask you to give us your explicit consent to include your data in a data processing activity called\n"
+"                                    <b t-out=\"object.activity_id.display_name\"></b>, property of\n"
+"                                    <i t-out=\"object.activity_id.controller_id.display_name\"></i>\n"
+"                                </p>\n"
+"                                <t t-out=\"object.activity_id.description\"></t>\n"
+"                                <p>\n"
+"                                    <t t-if=\"object.state == 'answered'\">\n"
+"                                        The last time you answered, you\n"
+"                                    </t>\n"
+"                                    <t t-else=\"\">\n"
+"                                        If you do nothing, we will assume you have\n"
+"                                    </t>\n"
+"\n"
+"                                    <t t-if=\"object.accepted\">\n"
+"                                        <b>accepted</b>\n"
+"                                    </t>\n"
+"                                    <t t-else=\"\">\n"
+"                                        <b>rejected</b>\n"
+"                                    </t>\n"
+"                                    such data processing.\n"
+"                                </p>\n"
+"                                <p>\n"
+"                                    You can update your preferences below:\n"
+"                                </p>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                        <tr>\n"
+"                            <td style=\"padding:15px 20px 0px 20px; font-size:16px; text-align:right;\">\n"
+"                                <a href=\"/privacy/consent/accept/\" style=\"background-color: #449d44; padding: 12px; font-weight: 12px; text-decoration: none; color: #fff; border-radius: 5px; font-size:16px;\">\n"
+"                                    Accept\n"
+"                                </a>\n"
+"                            </td>\n"
+"                            <td style=\"padding:15px 20px 0px 20px; font-size:16px; text-align:left;\">\n"
+"                                <a href=\"/privacy/consent/reject/\" style=\"background-color: #d9534f; padding: 12px; font-weight: 12px; text-decoration: none; color: #fff; border-radius: 5px; font-size:16px;\">\n"
+"                                    Reject\n"
+"                                </a>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                        <tr>\n"
+"                            <td colspan=\"2\" style=\"padding:15px 20px 15px 20px; font-size:16px;\">\n"
+"                                <p>\n"
+"                                    If you need further information, please respond to this email and we will attend your request as soon as possible.\n"
+"                                </p>\n"
+"                                <p>\n"
+"                                    Thank you!\n"
+"                                </p>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"                <table style=\"width:600px;margin:0px auto;text-align:center;\">\n"
+"                    <tbody>\n"
+"                        <tr>\n"
+"                            <td style=\"padding-top:10px;font-size: 12px;\">\n"
+"                                <p>\n"
+"                                    Sent by\n"
+"                                    <a href=\"/\" style=\"color:#717188;\">\n"
+"                                        <t t-out=\"object.activity_id.controller_id.display_name\"></t>\n"
+"                                    </a>.\n"
+"                                </p>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"            </div>\n"
+"        "
+msgstr ""
+"<div style=\"background:#F3F5F6;color:#515166;padding:25px 0px;font-family:Arial,Helvetica,sans-serif;font-size:14px;\">\n"
+"                <table style=\"width:600px;margin:5px auto;\">\n"
+"                    <tbody>\n"
+"                        <tr>\n"
+"                            <td>\n"
+"                                <a href=\"/\">\n"
+"                                    <img src=\"/logo\" t-att-alt=\"object.activity_id.controller_id.display_name\" style=\"vertical-align:baseline;max-width:100px;\">\n"
+"                                </a>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"                <table style=\"width:600px;margin:0px auto;background:white;border:1px solid #e1e1e1;\">\n"
+"                    <tbody>\n"
+"                        <tr>\n"
+"                            <td colspan=\"2\" style=\"padding:15px 20px 0px 20px; font-size:16px;\">\n"
+"                                <p>\n"
+"                                    Hei, <t t-out=\"object.partner_id.name\"></t>\n"
+"                                </p>\n"
+"                                <p>\n"
+"                                    Pyydämme sinulta nimenomaista suostumusta tietojesi sisällyttämiseksi tietojenkäsittelytoimintoon nimeltä\n"
+"                                    <b t-out=\"object.activity_id.display_name\"></b>, rekisterinpitäjänä\n"
+"                                    <i t-out=\"object.activity_id.controller_id.display_name\"></i>\n"
+"                                </p>\n"
+"                                <t t-out=\"object.activity_id.description\"></t>\n"
+"                                <p>\n"
+"                                    <t t-if=\"object.state == 'answered'\">\n"
+"                                        Edellisellä kerralla vastatessasi olet\n"
+"                                    </t>\n"
+"                                    <t t-else=\"\">\n"
+"                                        Jos et tee mitään, oletamme sinun olevan\n"
+"                                    </t>\n"
+"\n"
+"                                    <t t-if=\"object.accepted\">\n"
+"                                        <b>hyväksynyt</b>\n"
+"                                    </t>\n"
+"                                    <t t-else=\"\">\n"
+"                                        <b>hylännyt</b>\n"
+"                                    </t>\n"
+"                                    tämän tietojenkäsittelyn.\n"
+"                                </p>\n"
+"                                <p>\n"
+"                                    Voit päivittää valintasi alla:\n"
+"                                </p>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                        <tr>\n"
+"                            <td style=\"padding:15px 20px 0px 20px; font-size:16px; text-align:right;\">\n"
+"                                <a href=\"/privacy/consent/accept/\" style=\"background-color: #449d44; padding: 12px; font-weight: 12px; text-decoration: none; color: #fff; border-radius: 5px; font-size:16px;\">\n"
+"                                    Hyväksy\n"
+"                                </a>\n"
+"                            </td>\n"
+"                            <td style=\"padding:15px 20px 0px 20px; font-size:16px; text-align:left;\">\n"
+"                                <a href=\"/privacy/consent/reject/\" style=\"background-color: #d9534f; padding: 12px; font-weight: 12px; text-decoration: none; color: #fff; border-radius: 5px; font-size:16px;\">\n"
+"                                    Hylkää\n"
+"                                </a>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                        <tr>\n"
+"                            <td colspan=\"2\" style=\"padding:15px 20px 15px 20px; font-size:16px;\">\n"
+"                                <p>\n"
+"                                    Jos tarvitset lisätietoja, vastaa tähän sähköpostiin, niin käsittelemme pyyntösi mahdollisimman pian.\n"
+"                                </p>\n"
+"                                <p>\n"
+"                                    Kiitos!\n"
+"                                </p>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"                <table style=\"width:600px;margin:0px auto;text-align:center;\">\n"
+"                    <tbody>\n"
+"                        <tr>\n"
+"                            <td style=\"padding-top:10px;font-size: 12px;\">\n"
+"                                <p>\n"
+"                                    Lähettäjä\n"
+"                                    <a href=\"/\" style=\"color:#717188;\">\n"
+"                                        <t t-out=\"object.activity_id.controller_id.display_name\"></t>\n"
+"                                    </a>.\n"
+"                                </p>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"            </div>\n"
+"        "
+
+#. module: privacy_consent
+#: model:mail.message.subtype,name:privacy_consent.mt_activity_acceptance_changed
+msgid "Acceptance Changed"
+msgstr "Hyväksyntä muuttui"
+
+#. module: privacy_consent
+#: model:mail.message.subtype,name:privacy_consent.mt_consent_acceptance_changed
+msgid "Acceptance Changed by Subject"
+msgstr "Rekisteröity muutti hyväksyntää"
+
+#. module: privacy_consent
+#: model:mail.message.subtype,description:privacy_consent.mt_consent_acceptance_changed
+msgid "Acceptance status updated by subject"
+msgstr "Rekisteröity päivitti hyväksynnän tilaa"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__accepted
+#: model_terms:ir.ui.view,arch_db:privacy_consent.consent_search
+msgid "Accepted"
+msgstr "Hyväksytty"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_activity__default_consent
+msgid "Accepted by default"
+msgstr "Hyväksytty oletuksena"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__message_needaction
+msgid "Action Needed"
+msgstr "Vaatii toimenpiteitä"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__active
+msgid "Active"
+msgstr "Aktiivinen"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__activity_id
+#: model_terms:ir.ui.view,arch_db:privacy_consent.consent_search
+msgid "Activity"
+msgstr "Toiminto"
+
+#. module: privacy_consent
+#: model:ir.model.fields.selection,name:privacy_consent.selection__privacy_consent__state__answered
+msgid "Answered"
+msgstr "Vastattu"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.consent_form
+#: model_terms:ir.ui.view,arch_db:privacy_consent.consent_search
+msgid "Archived"
+msgstr "Arkistoitu"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.consent_form
+msgid "Ask for consent"
+msgstr "Pyydä suostumus"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_activity__consent_required
+msgid "Ask subjects for consent"
+msgstr "Pyydä rekisteröityjen suostumus"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__message_attachment_count
+msgid "Attachment Count"
+msgstr "Liitteiden määrä"
+
+#. module: privacy_consent
+#: model:ir.model.fields.selection,name:privacy_consent.selection__privacy_activity__consent_required__auto
+msgid "Automatically"
+msgstr "Automaattisesti"
+
+#. module: privacy_consent
+#: model:ir.model.fields.selection,name:privacy_consent.selection__privacy_consent__state__sent
+msgid "Awaiting response"
+msgstr "Odottaa vastausta"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.activity_form
+msgid "Consent"
+msgstr "Suostumus"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_activity__consent_template_default_body_html
+msgid "Consent Template Default Body Html"
+msgstr "Suostumuspohjan oletussisältö (HTML)"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_activity__consent_template_default_subject
+msgid "Consent Template Default Subject"
+msgstr "Suostumuspohjan oletusotsikko"
+
+#. module: privacy_consent
+#: model:ir.model,name:privacy_consent.model_privacy_consent
+msgid "Consent of data processing"
+msgstr "Tietojenkäsittelyn suostumus"
+
+#. module: privacy_consent
+#: model:ir.actions.act_window,name:privacy_consent.consent_action
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_activity__consent_ids
+#: model:ir.model.fields,field_description:privacy_consent.field_res_partner__privacy_consent_count
+#: model:ir.model.fields,field_description:privacy_consent.field_res_users__privacy_consent_count
+#: model:ir.ui.menu,name:privacy_consent.menu_privacy_consent
+msgid "Consents"
+msgstr "Suostumukset"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_activity__consent_count
+msgid "Consents count"
+msgstr "Suostumusten määrä"
+
+#. module: privacy_consent
+#: model:ir.model,name:privacy_consent.model_res_partner
+msgid "Contact"
+msgstr "Yhteystieto"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__create_uid
+msgid "Created by"
+msgstr "Luonut"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__create_date
+msgid "Created on"
+msgstr "Luotu"
+
+#. module: privacy_consent
+#: model:ir.model,name:privacy_consent.model_privacy_activity
+msgid "Data processing activities"
+msgstr "Tietojenkäsittelytoiminnot"
+
+#. module: privacy_consent
+#: model:mail.template,subject:privacy_consent.template_consent
+msgid "Data processing consent request for {{ object.activity_id.display_name }}"
+msgstr "Tietojenkäsittelyn suostumuspyyntö: {{ object.activity_id.display_name }}"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__display_name
+msgid "Display Name"
+msgstr "Näyttönimi"
+
+#. module: privacy_consent
+#: model:ir.model.fields.selection,name:privacy_consent.selection__privacy_consent__state__draft
+msgid "Draft"
+msgstr "Luonnos"
+
+#. module: privacy_consent
+#: model:ir.model.constraint,message:privacy_consent.constraint_privacy_consent_unique_partner_activity
+msgid "Duplicated partner in this data processing activity"
+msgstr "Kumppani on jo tässä tietojenkäsittelytoiminnossa"
+
+#. module: privacy_consent
+#: model:ir.model,name:privacy_consent.model_mail_template
+msgid "Email Templates"
+msgstr "Sähköpostipohjat"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_activity__consent_template_id
+msgid "Email template"
+msgstr "Sähköpostipohja"
+
+#. module: privacy_consent
+#: model:ir.model.fields,help:privacy_consent.field_privacy_activity__consent_template_id
+msgid "Email to be sent to subjects to ask for consent. A good template should include details about the current consent request status, how to change it, and where to get more information."
+msgstr "Rekisteröidyille suostumuksen pyytämiseksi lähetettävä sähköposti. Hyvän pohjan tulee sisältää tiedot suostumuspyynnön nykyisestä tilasta, sen muuttamisesta ja lisätietojen saamisesta."
+
+#. module: privacy_consent
+#: model:ir.model.fields,help:privacy_consent.field_privacy_activity__consent_required
+msgid "Enable if you need to track any kind of consent from the affected subjects"
+msgstr "Ota käyttöön, jos haluat seurata rekisteröityjen suostumuksia"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__message_follower_ids
+msgid "Followers"
+msgstr "Seuraajat"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seuraajat (kumppanit)"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.activity_form
+msgid "Generate and enqueue missing consent requests"
+msgstr "Luo ja jonota puuttuvat suostumuspyynnöt"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.activity_form
+msgid "Generate missing draft consent requests"
+msgstr "Luo puuttuvat suostumuspyyntöluonnokset"
+
+#. module: privacy_consent
+#. odoo-python
+#: code:addons/privacy_consent/models/privacy_activity.py:0
+#, python-format
+msgid "Generated consents"
+msgstr "Luodut suostumukset"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.consent_search
+msgid "Group By"
+msgstr "Ryhmittele"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__has_message
+msgid "Has Message"
+msgstr "Sisältää viestin"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.form
+msgid "Hello,"
+msgstr "Hei,"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.form
+msgid "I <b>accept</b> this processing of my data"
+msgstr "<b>Hyväksyn</b> tietojeni käsittelyn"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.form
+msgid "I <b>reject</b> this processing of my data"
+msgstr "<b>Hylkään</b> tietojeni käsittelyn"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__id
+msgid "ID"
+msgstr "ID"
+
+#. module: privacy_consent
+#: model:ir.model.fields,help:privacy_consent.field_privacy_consent__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Jos valittu, uudet viestit vaativat huomiotasi."
+
+#. module: privacy_consent
+#: model:ir.model.fields,help:privacy_consent.field_privacy_consent__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Jos valittu, joidenkin viestien toimituksessa on virhe."
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.form
+msgid "If it was a mistake, you can undo it here:"
+msgstr "Jos kyseessä oli virhe, voit perua valintasi tästä:"
+
+#. module: privacy_consent
+#: model:ir.model.fields,help:privacy_consent.field_privacy_consent__accepted
+msgid "Indicates current acceptance status, which can come from subject's last answer, or from the default specified in the related data processing activity."
+msgstr "Ilmaisee nykyisen hyväksynnän tilan, joka voi tulla rekisteröidyn viimeisimmästä vastauksesta tai tietojenkäsittelytoiminnon oletusarvosta."
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__message_is_follower
+msgid "Is Follower"
+msgstr "On seuraaja"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__last_metadata
+msgid "Last Metadata"
+msgstr "Viimeisin metatieto"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__write_uid
+msgid "Last Updated by"
+msgstr "Viimeksi päivittänyt"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__write_date
+msgid "Last Updated on"
+msgstr "Viimeksi päivitetty"
+
+#. module: privacy_consent
+#: model:ir.model.fields.selection,name:privacy_consent.selection__privacy_activity__consent_required__manual
+msgid "Manually"
+msgstr "Manuaalisesti"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__message_has_error
+msgid "Message Delivery error"
+msgstr "Viestin toimitusvirhe"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__message_ids
+msgid "Messages"
+msgstr "Viestit"
+
+#. module: privacy_consent
+#: model:ir.model.fields,help:privacy_consent.field_privacy_consent__last_metadata
+msgid "Metadata from the last acceptance or rejection by the subject"
+msgstr "Rekisteröidyn viimeisimmän hyväksynnän tai hylkäyksen metatiedot"
+
+#. module: privacy_consent
+#. odoo-python
+#: code:addons/privacy_consent/models/mail_template.py:0
+#, python-format
+msgid ""
+"Missing privacy consent link placeholders. You need at least these two links:\n"
+"<a href=\"%(consent_url)s\">Accept</a>\n"
+"<a href=\"%(reject_url)s\">Reject</a>"
+msgstr ""
+"Tietosuojasuostumuksen linkkien paikkamerkit puuttuvat. Tarvitset vähintään nämä kaksi linkkiä:\n"
+"<a href=\"%(consent_url)s\">Hyväksy</a>\n"
+"<a href=\"%(reject_url)s\">Hylkää</a>"
+
+#. module: privacy_consent
+#: model:mail.message.subtype,name:privacy_consent.mt_activity_consent_new
+#: model:mail.message.subtype,name:privacy_consent.mt_consent_consent_new
+msgid "New Consent"
+msgstr "Uusi suostumus"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Toimenpiteiden määrä"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__message_has_error_counter
+msgid "Number of errors"
+msgstr "Virheiden määrä"
+
+#. module: privacy_consent
+#: model:ir.model.fields,help:privacy_consent.field_privacy_consent__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Toimenpiteitä vaativien viestien määrä"
+
+#. module: privacy_consent
+#: model:ir.model.fields,help:privacy_consent.field_privacy_consent__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Toimitusvirheellisten viestien määrä"
+
+#. module: privacy_consent
+#: model:ir.model,name:privacy_consent.model_mail_mail
+msgid "Outgoing Mails"
+msgstr "Lähtevät sähköpostit"
+
+#. module: privacy_consent
+#: model:mail.template,name:privacy_consent.template_consent
+msgid "Personal data processing consent request"
+msgstr "Henkilötietojen käsittelyn suostumuspyyntö"
+
+#. module: privacy_consent
+#: model:mail.message.subtype,description:privacy_consent.mt_activity_acceptance_changed
+msgid "Privacy consent request acceptance status changed"
+msgstr "Tietosuojasuostumuspyynnön hyväksynnän tila muuttui"
+
+#. module: privacy_consent
+#: model:mail.message.subtype,description:privacy_consent.mt_activity_consent_new
+#: model:mail.message.subtype,description:privacy_consent.mt_consent_consent_new
+msgid "Privacy consent request created"
+msgstr "Tietosuojasuostumuspyyntö luotu"
+
+#. module: privacy_consent
+#: model:mail.message.subtype,description:privacy_consent.mt_activity_state_changed
+#: model:mail.message.subtype,description:privacy_consent.mt_consent_state_changed
+msgid "Privacy consent request state changed"
+msgstr "Tietosuojasuostumuspyynnön tila muuttui"
+
+#. module: privacy_consent
+#: model:ir.model.fields,help:privacy_consent.field_res_partner__privacy_consent_count
+#: model:ir.model.fields,help:privacy_consent.field_res_users__privacy_consent_count
+msgid "Privacy consent requests amount"
+msgstr "Tietosuojasuostumuspyyntöjen määrä"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_res_partner__privacy_consent_ids
+#: model:ir.model.fields,field_description:privacy_consent.field_res_users__privacy_consent_ids
+msgid "Privacy consents"
+msgstr "Tietosuojasuostumukset"
+
+#. module: privacy_consent
+#: model:ir.actions.server,name:privacy_consent.cron_auto_consent_ir_actions_server
+msgid "Request automatic data processing consents"
+msgstr "Pyydä automaattiset tietojenkäsittelyn suostumukset"
+
+#. module: privacy_consent
+#. odoo-python
+#: code:addons/privacy_consent/models/privacy_activity.py:0
+#, python-format
+msgid "Require consent is available only for subjects in current database."
+msgstr "Suostumuksen vaatiminen on käytettävissä vain nykyisen tietokannan rekisteröidyille."
+
+#. module: privacy_consent
+#: model:ir.model.fields,help:privacy_consent.field_privacy_activity__server_action_id
+msgid "Run this action when a new consent request is created or its acceptance status is updated."
+msgstr "Suorita tämä toiminto, kun uusi suostumuspyyntö luodaan tai sen hyväksynnän tila päivittyy."
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_activity__server_action_id
+msgid "Server action"
+msgstr "Palvelintoiminto"
+
+#. module: privacy_consent
+#: model:ir.model.fields,help:privacy_consent.field_privacy_activity__default_consent
+msgid "Should we assume the subject has accepted if we receive no response?"
+msgstr "Oletetaanko rekisteröidyn hyväksyneen, jos vastausta ei saada?"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.form
+msgid "Sincerely,<br/>"
+msgstr "Ystävällisin terveisin,<br/>"
+
+#. module: privacy_consent
+#. odoo-python
+#: code:addons/privacy_consent/models/privacy_activity.py:0
+#, python-format
+msgid "Specify a mail template to ask automated consent."
+msgstr "Määritä sähköpostipohja automaattista suostumuspyyntöä varten."
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__state
+#: model_terms:ir.ui.view,arch_db:privacy_consent.consent_search
+msgid "State"
+msgstr "Tila"
+
+#. module: privacy_consent
+#: model:mail.message.subtype,name:privacy_consent.mt_activity_state_changed
+#: model:mail.message.subtype,name:privacy_consent.mt_consent_state_changed
+msgid "State Changed"
+msgstr "Tila muuttui"
+
+#. module: privacy_consent
+#: model:ir.model.fields,field_description:privacy_consent.field_privacy_consent__partner_id
+msgid "Subject"
+msgstr "Rekisteröity"
+
+#. module: privacy_consent
+#: model:ir.model.fields,help:privacy_consent.field_privacy_consent__partner_id
+msgid "Subject asked for consent."
+msgstr "Rekisteröity, jolta suostumusta pyydetään."
+
+#. module: privacy_consent
+#: model:ir.actions.server,name:privacy_consent.sync_blacklist
+msgid "Sync partner's email blacklist status"
+msgstr "Synkronoi kumppanin sähköpostin estolistatila"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.form
+msgid "Thank you!"
+msgstr "Kiitos!"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.form
+msgid "Thanks for your response."
+msgstr "Kiitos vastauksestasi."
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.activity_form
+msgid "This could enqueue many consent emails, are you sure to proceed?"
+msgstr "Tämä voi jonottaa useita suostumussähköposteja. Haluatko varmasti jatkaa?"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.form
+msgid "We asked you to authorize us to process your data in this data processing activity:"
+msgstr "Pyysimme lupaa käsitellä tietojasi tässä tietojenkäsittelytoiminnossa:"
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.form
+msgid "We have recorded this action on your side."
+msgstr "Olemme tallentaneet valintasi."
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.form
+msgid "You have <b class=\"text-danger\">rejected</b> such processing."
+msgstr "Olet <b class=\"text-danger\">hylännyt</b> tällaisen käsittelyn."
+
+#. module: privacy_consent
+#: model_terms:ir.ui.view,arch_db:privacy_consent.form
+msgid "You have <b class=\"text-success\">accepted</b> such processing."
+msgstr "Olet <b class=\"text-success\">hyväksynyt</b> tällaisen käsittelyn."
